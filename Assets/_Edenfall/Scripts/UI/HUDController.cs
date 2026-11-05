@@ -22,6 +22,7 @@ namespace Edenfall.UI
         [SerializeField] private GameObject inventoryModal;
         [SerializeField] private GameObject galleryModal;
         [SerializeField] private GameObject saveLoadModal;
+        [SerializeField] private GameObject characterDirectoryModal;
 
         [Header("Language Toggle Button")]
         [SerializeField] private Text languageButtonText;
@@ -69,6 +70,7 @@ namespace Edenfall.UI
                 if (kb.rKey.wasPressedThisFrame) ToggleRelationshipModal();
                 if (kb.iKey.wasPressedThisFrame) ToggleInventoryModal();
                 if (kb.gKey.wasPressedThisFrame) ToggleGalleryModal();
+                if (kb.cKey.wasPressedThisFrame) ToggleCharacterDirectoryModal();
                 if (kb.escapeKey.wasPressedThisFrame) ToggleSaveLoadModal();
             }
         }
@@ -140,6 +142,7 @@ namespace Edenfall.UI
         public void ToggleInventoryModal() => ToggleModal(inventoryModal);
         public void ToggleGalleryModal() => ToggleModal(galleryModal);
         public void ToggleSaveLoadModal() => ToggleModal(saveLoadModal);
+        public void ToggleCharacterDirectoryModal() => ToggleModal(characterDirectoryModal);
 
         private void ToggleModal(GameObject modal)
         {

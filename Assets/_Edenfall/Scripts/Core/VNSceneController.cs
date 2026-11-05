@@ -87,11 +87,19 @@ namespace Edenfall.Core
 
             GameEvents.OnTimeOfDayChanged += HandleTimeOfDayChanged;
 
-            // Stage Aurelia in first-person position
-            if (aureliaRoot != null)
+            // Stage Aurelia using mathematical NPCStageAnchor
+            if (aureliaRig != null)
             {
-                aureliaRoot.transform.position = firstPersonCenterPos;
-                aureliaRoot.transform.localScale = firstPersonScale;
+                aureliaRig.SetStagingMode(StagingMode.DialoguePortrait, mainCamera);
+            }
+            else if (aureliaRoot != null)
+            {
+                var anchor = aureliaRoot.GetComponent<NPCStageAnchor>();
+                var sr = aureliaRoot.GetComponent<SpriteRenderer>();
+                if (anchor != null && sr != null)
+                {
+                    anchor.AlignCharacter(aureliaRoot.transform, sr, StagingMode.DialoguePortrait, mainCamera);
+                }
             }
         }
 
@@ -188,6 +196,10 @@ namespace Edenfall.Core
         {
             if (DialogueManager.Instance != null && aureliaDef != null && aureliaDialogueTree != null)
             {
+                if (aureliaRig != null)
+                {
+                    aureliaRig.SetStagingMode(StagingMode.DialoguePortrait, mainCamera);
+                }
                 SetCameraFocus(true); // Zoom in on dialogue
                 DialogueManager.Instance.StartDialogue(aureliaDef, aureliaDialogueTree, aureliaRelationship);
 

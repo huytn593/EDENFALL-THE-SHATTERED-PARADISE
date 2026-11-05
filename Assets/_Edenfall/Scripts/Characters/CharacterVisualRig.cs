@@ -1,22 +1,37 @@
 using System.Collections;
 using Edenfall.Characters;
+using Edenfall.World;
 using UnityEngine;
 
 namespace Edenfall.Characters
 {
     public class CharacterVisualRig : MonoBehaviour
     {
-        [Header("Hierarchy Transforms")]
+        [Header("Master Visual Novel Sprites")]
+        [SerializeField] private SpriteRenderer primaryRenderer;
+        [SerializeField] private Sprite portraitSprite;
+        [SerializeField] private Sprite fullBodySprite;
+        [SerializeField] private NPCStageAnchor stageAnchor;
+        [SerializeField] private StagingMode currentStagingMode = StagingMode.DialoguePortrait;
+
+        [Header("Procedural Breathing (Grounded)")]
+        [SerializeField] private bool enableBreathing = true;
+        [SerializeField] private float breathingSpeed = 1.8f;
+        [SerializeField] private float breathingScaleAmplitude = 0.02f; // Subtle 2% upward expansion
+
+        [Header("Idle Sway (Grounded)")]
+        [SerializeField] private bool enableIdleSway = true;
+        [SerializeField] private float swaySpeed = 1.2f;
+        [SerializeField] private float swayMaxAngle = 0.35f; // Rotation around feet anchor
+
+        [Header("Legacy / Layered Overlays (Optional)")]
         [SerializeField] private Transform rootTransform;
         [SerializeField] private Transform torsoTransform;
         [SerializeField] private Transform headTransform;
         [SerializeField] private Transform hairBackTransform;
         [SerializeField] private Transform hairFrontTransform;
-        [SerializeField] private Transform leftArmTransform;
-        [SerializeField] private Transform rightArmTransform;
         [SerializeField] private Transform skirtTransform;
 
-        [Header("Layered Sprite Renderers")]
         [SerializeField] private SpriteRenderer baseBodyRenderer;
         [SerializeField] private SpriteRenderer faceRenderer;
         [SerializeField] private SpriteRenderer eyesRenderer;
@@ -24,19 +39,6 @@ namespace Edenfall.Characters
         [SerializeField] private SpriteRenderer hairBackRenderer;
         [SerializeField] private SpriteRenderer hairFrontRenderer;
         [SerializeField] private SpriteRenderer skirtRenderer;
-
-        [Header("Procedural Breathing")]
-        [SerializeField] private bool enableBreathing = true;
-        [SerializeField] private float breathingSpeed = 1.8f;
-        [SerializeField] private float torsoYScaleAmplitude = 0.025f;
-        [SerializeField] private float headYOffsetAmplitude = 0.015f;
-
-        [Header("Secondary Hair & Cloth Motion")]
-        [SerializeField] private bool enableSecondaryMotion = true;
-        [SerializeField] private float hairSwaySpeed = 2.2f;
-        [SerializeField] private float hairMaxAngle = 4.0f;
-        [SerializeField] private float skirtSwaySpeed = 1.6f;
-        [SerializeField] private float skirtMaxAngle = 3.0f;
 
         [Header("Eye Blinking")]
         [SerializeField] private bool enableBlinking = true;
@@ -55,28 +57,41 @@ namespace Edenfall.Characters
         [SerializeField] private CharacterEmotion currentEmotion = CharacterEmotion.Neutral;
         [SerializeField] private bool isTalking = false;
 
-        private Vector3 initialTorsoScale;
-        private Vector3 initialHeadPos;
-        private Quaternion initialHairBackRot;
-        private Quaternion initialSkirtRot;
+        private Vector3 basePosition;
+        private Vector3 baseScale;
+        private Quaternion baseRotation;
+        private bool isBaseCaptured = false;
+
         private Coroutine blinkCoroutine;
         private Coroutine talkCoroutine;
 
         public CharacterEmotion CurrentEmotion => currentEmotion;
         public bool IsTalking => isTalking;
+        public StagingMode CurrentStagingMode => currentStagingMode;
+        public SpriteRenderer PrimaryRenderer => primaryRenderer;
 
         private void Awake()
         {
             if (rootTransform == null) rootTransform = transform;
-            if (torsoTransform != null) initialTorsoScale = torsoTransform.localScale;
-            if (headTransform != null) initialHeadPos = headTransform.localPosition;
-            if (hairBackTransform != null) initialHairBackRot = hairBackTransform.localRotation;
-            if (skirtTransform != null) initialSkirtRot = skirtTransform.localRotation;
+            if (primaryRenderer == null) primaryRenderer = GetComponent<SpriteRenderer>();
+            if (stageAnchor == null) stageAnchor = GetComponent<NPCStageAnchor>();
+
+            CaptureBaseTransform();
+        }
+
+        private void Start()
+        {
+            CaptureBaseTransform();
+            if (stageAnchor != null && primaryRenderer != null)
+            {
+                SetStagingMode(currentStagingMode);
+            }
         }
 
         private void OnEnable()
         {
-            if (enableBlinking)
+            CaptureBaseTransform();
+            if (enableBlinking && eyesRenderer != null && eyeOpenSprite != null && eyeBlinkSprite != null)
             {
                 blinkCoroutine = StartCoroutine(BlinkRoutine());
             }
@@ -97,55 +112,83 @@ namespace Edenfall.Characters
             }
         }
 
+        public void CaptureBaseTransform()
+        {
+            basePosition = transform.position;
+            baseScale = transform.localScale;
+            baseRotation = transform.localRotation;
+            isBaseCaptured = true;
+        }
+
         private void Update()
         {
+            if (!isBaseCaptured) CaptureBaseTransform();
+
             float time = Time.time;
 
-            // 1. Procedural Breathing
+            // 1. Procedural Grounded Breathing
+            // Because sprite pivot is anchored at feet (0.5, 0.0), scaling Y expands strictly UPWARDS (+y).
+            // Feet remain locked at world ground contact position without dipping or floating.
             if (enableBreathing)
             {
                 float breathSin = Mathf.Sin(time * breathingSpeed);
+                float upwardStretch = Mathf.Max(0f, breathSin) * breathingScaleAmplitude;
+                transform.localScale = new Vector3(baseScale.x, baseScale.y * (1f + upwardStretch), baseScale.z);
+            }
 
-                if (torsoTransform != null)
+            // 2. Subtle Grounded Sway
+            // Rotates gently around feet pivot (Z axis)
+            if (enableIdleSway)
+            {
+                float sway = Mathf.Sin(time * swaySpeed) * swayMaxAngle;
+                transform.localRotation = baseRotation * Quaternion.Euler(0, 0, sway);
+            }
+
+            // 3. Anchor Grounding Enforcement
+            if (stageAnchor != null)
+            {
+                transform.position = stageAnchor.ClampIdleMotion(basePosition, Vector3.zero);
+            }
+        }
+
+        public void SetMasterSprites(Sprite portrait, Sprite fullBody, SpriteRenderer renderer = null, NPCStageAnchor anchor = null)
+        {
+            portraitSprite = portrait;
+            fullBodySprite = fullBody;
+            if (renderer != null) primaryRenderer = renderer;
+            if (anchor != null) stageAnchor = anchor;
+        }
+
+        public void SetStagingMode(StagingMode newMode, Camera cam = null)
+        {
+            currentStagingMode = newMode;
+
+            if (primaryRenderer != null)
+            {
+                if (newMode == StagingMode.DialoguePortrait && portraitSprite != null)
                 {
-                    torsoTransform.localScale = initialTorsoScale + new Vector3(0, breathSin * torsoYScaleAmplitude, 0);
+                    primaryRenderer.sprite = portraitSprite;
                 }
-
-                if (headTransform != null)
+                else if (newMode == StagingMode.FullBodyGrounded && fullBodySprite != null)
                 {
-                    headTransform.localPosition = initialHeadPos + new Vector3(0, breathSin * headYOffsetAmplitude, 0);
+                    primaryRenderer.sprite = fullBodySprite;
                 }
             }
 
-            // 2. Secondary Hair & Gown Motion
-            if (enableSecondaryMotion)
+            if (stageAnchor != null)
             {
-                if (hairBackTransform != null)
-                {
-                    float hairAngle = Mathf.Sin(time * hairSwaySpeed) * hairMaxAngle;
-                    hairBackTransform.localRotation = initialHairBackRot * Quaternion.Euler(0, 0, hairAngle);
-                }
-
-                if (hairFrontTransform != null)
-                {
-                    float frontHairAngle = Mathf.Sin(time * (hairSwaySpeed * 1.15f) + 0.5f) * (hairMaxAngle * 0.6f);
-                    hairFrontTransform.localRotation = Quaternion.Euler(0, 0, frontHairAngle);
-                }
-
-                if (skirtTransform != null)
-                {
-                    float skirtAngle = Mathf.Sin(time * skirtSwaySpeed + 0.8f) * skirtMaxAngle;
-                    skirtTransform.localRotation = initialSkirtRot * Quaternion.Euler(0, 0, skirtAngle);
-                }
+                Camera targetCam = cam != null ? cam : Camera.main;
+                stageAnchor.AlignCharacter(transform, primaryRenderer, newMode, targetCam);
+                CaptureBaseTransform();
             }
         }
 
         private IEnumerator BlinkRoutine()
         {
-            while (true)
+            while (enableBlinking && eyesRenderer != null)
             {
-                float waitTime = Random.Range(minBlinkInterval, maxBlinkInterval);
-                yield return new WaitForSeconds(waitTime);
+                float wait = Random.Range(minBlinkInterval, maxBlinkInterval);
+                yield return new WaitForSeconds(wait);
 
                 if (eyesRenderer != null && eyeBlinkSprite != null)
                 {
@@ -164,7 +207,7 @@ namespace Edenfall.Characters
             if (isTalking)
             {
                 if (talkCoroutine != null) StopCoroutine(talkCoroutine);
-                if (gameObject.activeInHierarchy)
+                if (gameObject.activeInHierarchy && mouthRenderer != null)
                 {
                     talkCoroutine = StartCoroutine(TalkRoutine());
                 }
@@ -221,6 +264,7 @@ namespace Edenfall.Characters
                 Vector3 scale = rootTransform.localScale;
                 scale.x = Mathf.Abs(scale.x) * (faceRight ? 1f : -1f);
                 rootTransform.localScale = scale;
+                baseScale.x = Mathf.Abs(baseScale.x) * (faceRight ? 1f : -1f);
             }
         }
 
@@ -244,10 +288,8 @@ namespace Edenfall.Characters
             hairFrontRenderer = hairFrontR;
             skirtRenderer = skirtR;
 
-            if (torsoTransform != null) initialTorsoScale = torsoTransform.localScale;
-            if (headTransform != null) initialHeadPos = headTransform.localPosition;
-            if (hairBackTransform != null) initialHairBackRot = hairBackTransform.localRotation;
-            if (skirtTransform != null) initialSkirtRot = skirtTransform.localRotation;
+            if (primaryRenderer == null) primaryRenderer = bodyR;
+            CaptureBaseTransform();
         }
 
         public void AssignSprites(

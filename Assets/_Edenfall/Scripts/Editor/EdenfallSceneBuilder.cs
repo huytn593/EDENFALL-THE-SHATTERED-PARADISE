@@ -55,7 +55,7 @@ namespace Edenfall.Editor
             var (bgRenderer, spireRenderer) = CreateEnvironmentSetup();
 
             // 4. Heroine Staging (Aurelia - Large Center First-Person Scale)
-            var (aureliaObj, aureliaRig, aureliaRigCtrl) = CreateAureliaSetup();
+            var (aureliaObj, aureliaRig, aureliaRigCtrl) = CreateAureliaSetup(cameraObj.GetComponent<Camera>());
 
             // 5. Full Production UI Canvas (Visual Novel Layout)
             var (canvasObj, cinOverlay, cinCGImg, subText, spkText, skipBtn, hotspotContainer, mapModal) = CreateUISetup();
@@ -215,6 +215,13 @@ namespace Edenfall.Editor
                 SetPrivateField(matureMgr, "allEvents", new List<MatureEventDefinition> { evtIntimacy });
             }
 
+            // NPC Schedule Controller (Phase 3.5 Discrete Slot Scheduling & Interaction Locking)
+            var schedObj = new GameObject("NPCScheduleController");
+            schedObj.transform.SetParent(mgrRoot.transform);
+            var schedCtrl = schedObj.AddComponent<NPCScheduleController>();
+            var aureliaSched = AssetDatabase.LoadAssetAtPath<NPCSchedule>($"{DataRoot}/Schedules/Schedule_Aurelia.asset");
+            SetPrivateField(schedCtrl, "aureliaSchedule", aureliaSched);
+
             return (locMgr, matureMgr);
         }
 
@@ -247,99 +254,36 @@ namespace Edenfall.Editor
             return (srBg, srSpire);
         }
 
-        private static (GameObject, CharacterVisualRig, AureliaRigController) CreateAureliaSetup()
+        private static (GameObject, CharacterVisualRig, AureliaRigController) CreateAureliaSetup(Camera mainCam)
         {
             var charRoot = GameObject.Find("--- HEROINE STAGING ---") ?? new GameObject("--- HEROINE STAGING ---");
 
             var aureliaObj = new GameObject("Heroine_Aurelia");
             aureliaObj.transform.SetParent(charRoot.transform);
-            // First-person conversation scale & position (prominent center-right)
-            aureliaObj.transform.position = new Vector3(0.4f, -1.5f, 0f);
-            aureliaObj.transform.localScale = new Vector3(0.72f, 0.72f, 1f);
 
-            // Sprites
-            string sDir = $"{ArtRoot}/Characters/Aurelia/Sprites";
-            var bodySp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_FullBody.png");
-            var headSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_Rig_Head.png");
-            var torsoSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_Rig_Torso.png");
-            var skirtSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_Rig_Skirt.png");
-            var hairBackSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_Rig_HairBack.png");
-            var hairFrontSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_Rig_HairFront.png");
-            var eyeOpenSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_Rig_EyesOpen.png");
-            var eyeBlinkSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_Rig_EyesClosed.png");
-            var mouthClosedSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_Rig_MouthClosed.png");
-            var mouthOpenSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{sDir}/Aurelia_Rig_MouthOpen.png");
+            // Master Production Visual Novel Sprites (Zero Frankenstein collage pieces!)
+            string charRootArt = $"{ArtRoot}/Characters/Aurelia";
+            var portraitSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_VN_Portrait.png");
+            var fullBodySp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_VN_FullBody.png");
 
             // Base Body Renderer
             var baseR = aureliaObj.AddComponent<SpriteRenderer>();
-            baseR.sprite = bodySp;
+            baseR.sprite = portraitSp != null ? portraitSp : fullBodySp;
             baseR.sortingOrder = 8;
 
-            // HairBack
-            var hairBackObj = new GameObject("Rig_HairBack");
-            hairBackObj.transform.SetParent(aureliaObj.transform, false);
-            var hairBackR = hairBackObj.AddComponent<SpriteRenderer>();
-            hairBackR.sprite = hairBackSp;
-            hairBackR.sortingOrder = 7;
-
-            // Torso
-            var torsoObj = new GameObject("Rig_Torso");
-            torsoObj.transform.SetParent(aureliaObj.transform, false);
-            var torsoR = torsoObj.AddComponent<SpriteRenderer>();
-            torsoR.sprite = torsoSp;
-            torsoR.sortingOrder = 9;
-
-            // Skirt
-            var skirtObj = new GameObject("Rig_Skirt");
-            skirtObj.transform.SetParent(aureliaObj.transform, false);
-            var skirtR = skirtObj.AddComponent<SpriteRenderer>();
-            skirtR.sprite = skirtSp;
-            skirtR.sortingOrder = 8;
-
-            // Head
-            var headObj = new GameObject("Rig_Head");
-            headObj.transform.SetParent(aureliaObj.transform, false);
-            headObj.transform.localPosition = new Vector3(0, 0.05f, 0);
-            var headR = headObj.AddComponent<SpriteRenderer>();
-            headR.sprite = headSp;
-            headR.sortingOrder = 10;
-
-            // HairFront
-            var hairFrontObj = new GameObject("Rig_HairFront");
-            hairFrontObj.transform.SetParent(headObj.transform, false);
-            var hairFrontR = hairFrontObj.AddComponent<SpriteRenderer>();
-            hairFrontR.sprite = hairFrontSp;
-            hairFrontR.sortingOrder = 13;
-
-            // Eyes
-            var eyesObj = new GameObject("Rig_Eyes");
-            eyesObj.transform.SetParent(headObj.transform, false);
-            var eyesR = eyesObj.AddComponent<SpriteRenderer>();
-            eyesR.sprite = eyeOpenSp;
-            eyesR.sortingOrder = 11;
-
-            // Mouth
-            var mouthObj = new GameObject("Rig_Mouth");
-            mouthObj.transform.SetParent(headObj.transform, false);
-            var mouthR = mouthObj.AddComponent<SpriteRenderer>();
-            mouthR.sprite = mouthClosedSp;
-            mouthR.sortingOrder = 12;
+            // Anchor & Alignment System (Phase 3.5 Grounding & Anti-Floating Remediation)
+            var anchor = aureliaObj.AddComponent<NPCStageAnchor>();
 
             // Setup CharacterVisualRig
             var rig = aureliaObj.AddComponent<CharacterVisualRig>();
-            rig.ConfigureRig(
-                aureliaObj.transform, torsoObj.transform, headObj.transform, hairBackObj.transform, hairFrontObj.transform, skirtObj.transform,
-                baseR, headR, eyesR, mouthR, hairBackR, hairFrontR, skirtR
-            );
-            rig.AssignSprites(bodySp, headSp, eyeOpenSp, eyeBlinkSp, mouthClosedSp, mouthOpenSp, hairBackSp, hairFrontSp, skirtSp);
+            rig.SetMasterSprites(portraitSp, fullBodySp, baseR, anchor);
+
+            // Align mathematically to stage baseline
+            anchor.AlignCharacter(aureliaObj.transform, baseR, StagingMode.DialoguePortrait, mainCam);
+            rig.CaptureBaseTransform();
 
             // Setup AureliaRigController
             var rigCtrl = aureliaObj.AddComponent<AureliaRigController>();
-            rigCtrl.ConfigurePresets(
-                rig,
-                eyeOpenSp, eyeOpenSp, eyeOpenSp, eyeBlinkSp, eyeBlinkSp, eyeOpenSp,
-                mouthClosedSp, mouthOpenSp, mouthOpenSp
-            );
 
             // Setup NPC Controller
             var npc = aureliaObj.AddComponent<NPCController>();
@@ -567,6 +511,37 @@ namespace Edenfall.Editor
             var saveModal = CreateSimpleModal(canvasObj.transform, "SaveLoadModal", "LƯU TRỮ TIẾN TRÌNH (SAVE / LOAD)");
             saveModal.AddComponent<SaveLoadUI>();
             SetPrivateField(hud, "saveLoadModal", saveModal);
+
+            // 7. Character Directory Modal (Phase 3.5 NPC Discovery & 1-Click Direct Navigation)
+            var charDirModal = CreateSimpleModal(canvasObj.transform, "CharacterDirectoryModal", "DANH BẠ NHÂN VẬT (CHARACTER DIRECTORY)");
+            var dirUI = charDirModal.AddComponent<CharacterDirectoryUI>();
+
+            var cardsContainer = new GameObject("DirectoryCardsContainer");
+            cardsContainer.transform.SetParent(charDirModal.transform, false);
+            var dcRt = cardsContainer.AddComponent<RectTransform>();
+            dcRt.anchorMin = new Vector2(0.10f, 0.12f);
+            dcRt.anchorMax = new Vector2(0.90f, 0.84f);
+            dcRt.offsetMin = Vector2.zero;
+            dcRt.offsetMax = Vector2.zero;
+
+            var dVlg = cardsContainer.AddComponent<VerticalLayoutGroup>();
+            dVlg.spacing = 15f;
+            dVlg.childAlignment = TextAnchor.UpperCenter;
+            dVlg.childForceExpandHeight = false;
+
+            var dirCloseBtnObj = charDirModal.transform.Find("CloseButton")?.gameObject;
+            var dirCloseBtn = dirCloseBtnObj != null ? dirCloseBtnObj.GetComponent<Button>() : null;
+
+            var aureliaCharDef = AssetDatabase.LoadAssetAtPath<CharacterDefinition>($"{DataRoot}/Characters/Character_Aurelia.asset");
+            var charList = new List<CharacterDefinition> { aureliaCharDef };
+
+            SetPrivateField(dirUI, "directoryModal", charDirModal);
+            SetPrivateField(dirUI, "directoryCardsContainer", cardsContainer.transform);
+            SetPrivateField(dirUI, "closeButton", dirCloseBtn);
+            SetPrivateField(dirUI, "characters", charList);
+
+            charDirModal.SetActive(false);
+            SetPrivateField(hud, "characterDirectoryModal", charDirModal);
 
             return (canvasObj, cinCanvas, cinCGImg, subText, spkText, cinSkipBtn, hotspotCanvas.transform, mapModal);
         }

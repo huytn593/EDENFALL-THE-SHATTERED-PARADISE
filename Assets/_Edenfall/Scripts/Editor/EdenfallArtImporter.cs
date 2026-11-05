@@ -47,6 +47,19 @@ namespace Edenfall.Editor
                         changed = true;
                     }
 
+                    // For production VN character sprites, anchor pivot at the bottom (feet / baseline)
+                    if (path.Contains("Aurelia_VN_FullBody") || path.Contains("Aurelia_VN_Portrait"))
+                    {
+                        var settings = new TextureImporterSettings();
+                        importer.ReadTextureSettings(settings);
+                        if (settings.spriteAlignment != (int)SpriteAlignment.BottomCenter)
+                        {
+                            settings.spriteAlignment = (int)SpriteAlignment.BottomCenter;
+                            importer.SetTextureSettings(settings);
+                            changed = true;
+                        }
+                    }
+
                     if (!importer.alphaIsTransparency)
                     {
                         importer.alphaIsTransparency = true;
