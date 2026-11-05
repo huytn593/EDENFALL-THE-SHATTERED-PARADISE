@@ -35,6 +35,7 @@ namespace Edenfall.Core
         [Header("Heroine Staging (Aurelia)")]
         [SerializeField] private GameObject aureliaRoot;
         [SerializeField] private CharacterVisualRig aureliaRig;
+        [SerializeField] private AureliaLiveRig aureliaLiveRig;
         [SerializeField] private AureliaRigController aureliaRigController;
         [SerializeField] private NPCSchedule aureliaSchedule;
         [SerializeField] private DialogueTree aureliaDialogueTree;
@@ -88,7 +89,11 @@ namespace Edenfall.Core
             GameEvents.OnTimeOfDayChanged += HandleTimeOfDayChanged;
 
             // Stage Aurelia using mathematical NPCStageAnchor
-            if (aureliaRig != null)
+            if (aureliaLiveRig != null)
+            {
+                aureliaLiveRig.SetStagingMode(StagingMode.DialoguePortrait, mainCamera);
+            }
+            else if (aureliaRig != null)
             {
                 aureliaRig.SetStagingMode(StagingMode.DialoguePortrait, mainCamera);
             }
@@ -196,6 +201,12 @@ namespace Edenfall.Core
         {
             if (DialogueManager.Instance != null && aureliaDef != null && aureliaDialogueTree != null)
             {
+                if (aureliaLiveRig != null)
+                {
+                    aureliaLiveRig.SetStagingMode(StagingMode.DialoguePortrait, mainCamera);
+                    aureliaLiveRig.SetAnimationState(AureliaAnimationState.Talk_Normal);
+                    aureliaLiveRig.SetTalking(true);
+                }
                 if (aureliaRig != null)
                 {
                     aureliaRig.SetStagingMode(StagingMode.DialoguePortrait, mainCamera);
@@ -213,6 +224,11 @@ namespace Edenfall.Core
             if (DialogueManager.Instance != null)
             {
                 DialogueManager.Instance.OnDialogueFinished -= HandleDialogueFinished;
+            }
+            if (aureliaLiveRig != null)
+            {
+                aureliaLiveRig.SetTalking(false);
+                aureliaLiveRig.SetAnimationState(AureliaAnimationState.Idle_Normal);
             }
             SetCameraFocus(false);
         }

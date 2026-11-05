@@ -55,7 +55,7 @@ namespace Edenfall.Editor
             var (bgRenderer, spireRenderer) = CreateEnvironmentSetup();
 
             // 4. Heroine Staging (Aurelia - Large Center First-Person Scale)
-            var (aureliaObj, aureliaRig, aureliaRigCtrl) = CreateAureliaSetup(cameraObj.GetComponent<Camera>());
+            var (aureliaObj, aureliaRig, aureliaRigCtrl, aureliaLiveRig) = CreateAureliaSetup(cameraObj.GetComponent<Camera>());
 
             // 5. Full Production UI Canvas (Visual Novel Layout)
             var (canvasObj, cinOverlay, cinCGImg, subText, spkText, skipBtn, hotspotContainer, mapModal) = CreateUISetup();
@@ -72,6 +72,7 @@ namespace Edenfall.Editor
                 aureliaObj,
                 aureliaRig,
                 aureliaRigCtrl,
+                aureliaLiveRig,
                 hotspotContainer
             );
 
@@ -254,32 +255,63 @@ namespace Edenfall.Editor
             return (srBg, srSpire);
         }
 
-        private static (GameObject, CharacterVisualRig, AureliaRigController) CreateAureliaSetup(Camera mainCam)
+        private static (GameObject, CharacterVisualRig, AureliaRigController, AureliaLiveRig) CreateAureliaSetup(Camera mainCam)
         {
             var charRoot = GameObject.Find("--- HEROINE STAGING ---") ?? new GameObject("--- HEROINE STAGING ---");
 
             var aureliaObj = new GameObject("Heroine_Aurelia");
             aureliaObj.transform.SetParent(charRoot.transform);
 
-            // Master Production Visual Novel Sprites (Zero Frankenstein collage pieces!)
+            // Canonical Master Production Sprites
             string charRootArt = $"{ArtRoot}/Characters/Aurelia";
-            var portraitSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_VN_Portrait.png");
-            var fullBodySp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_VN_FullBody.png");
+            var halfBodySp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_HalfBody_Canonical.png")
+                ?? AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_VN_Portrait.png");
+            var fullBodySp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_FullBody_Canonical.png")
+                ?? AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_VN_FullBody.png");
+
+            // Talk Animation Frames (5 frames)
+            var talkFrames = new List<Sprite>();
+            for (int i = 0; i < 5; i++)
+            {
+                var tf = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Talk/Aurelia_Talk_{i:02d}.png");
+                if (tf != null) talkFrames.Add(tf);
+            }
+
+            // Canonical Portraits (16 frames)
+            var portraits = new List<Sprite>();
+            string[] pNames = { "Normal", "Smile", "Happy", "Excited", "Surprised", "Confused", "Thinking", "Concerned", "Shy", "Blush", "Teasing", "Seductive", "Sad", "Angry", "Hurt", "Satisfied" };
+            foreach (var pName in pNames)
+            {
+                var pSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Portraits/Portrait_{pName}.png");
+                if (pSp != null) portraits.Add(pSp);
+            }
 
             // Base Body Renderer
             var baseR = aureliaObj.AddComponent<SpriteRenderer>();
-            baseR.sprite = portraitSp != null ? portraitSp : fullBodySp;
+            baseR.sprite = halfBodySp != null ? halfBodySp : fullBodySp;
             baseR.sortingOrder = 8;
 
-            // Anchor & Alignment System (Phase 3.5 Grounding & Anti-Floating Remediation)
+            // Talk Renderer (for speech animation)
+            var talkChild = new GameObject("TalkRenderer");
+            talkChild.transform.SetParent(aureliaObj.transform, false);
+            var talkR = talkChild.AddComponent<SpriteRenderer>();
+            talkR.sortingOrder = 9;
+            talkChild.SetActive(false);
+
+            // Anchor & Alignment System
             var anchor = aureliaObj.AddComponent<NPCStageAnchor>();
 
-            // Setup CharacterVisualRig
+            // Phase 3.6 Live2D-Style Decoupled Character Rig
+            var liveRig = aureliaObj.AddComponent<AureliaLiveRig>();
+            liveRig.ConfigureMasterSprites(halfBodySp, fullBodySp, talkFrames, portraits, baseR, talkR, anchor);
+
+            // Backward Compatibility Visual Rig
             var rig = aureliaObj.AddComponent<CharacterVisualRig>();
-            rig.SetMasterSprites(portraitSp, fullBodySp, baseR, anchor);
+            rig.SetMasterSprites(halfBodySp, fullBodySp, baseR, anchor);
 
             // Align mathematically to stage baseline
             anchor.AlignCharacter(aureliaObj.transform, baseR, StagingMode.DialoguePortrait, mainCam);
+            liveRig.CaptureBaseTransform();
             rig.CaptureBaseTransform();
 
             // Setup AureliaRigController
@@ -293,7 +325,7 @@ namespace Edenfall.Editor
 
             npc.Initialize(aureliaDef, aureliaSchedule, aureliaDiag);
 
-            return (aureliaObj, rig, rigCtrl);
+            return (aureliaObj, rig, rigCtrl, liveRig);
         }
 
         private static (GameObject, GameObject, Image, Text, Text, Button, Transform, GameObject) CreateUISetup()
@@ -489,6 +521,17 @@ namespace Edenfall.Editor
             sTxtRt.offsetMax = Vector2.zero;
 
             var (cinSkipBtn, _) = CreateVNActionButton(subCanvas.transform, "SKIP >>", new Vector2(0.86f, 0.65f), new Vector2(0.98f, 0.92f));
+
+            // Attach Phase 3.6 Cinematic CG Presentation Controller
+            var cgCtrl = cinCanvas.AddComponent<CinematicCGController>();
+            var cgCg = cinCanvas.AddComponent<CanvasGroup>();
+            SetPrivateField(cgCtrl, "cinematicOverlayCanvas", cinCanvas);
+            SetPrivateField(cgCtrl, "overlayCanvasGroup", cgCg);
+            SetPrivateField(cgCtrl, "primaryCGImage", cinCGImg);
+            SetPrivateField(cgCtrl, "speakerText", spkText);
+            SetPrivateField(cgCtrl, "subtitleText", subText);
+            SetPrivateField(cgCtrl, "skipButton", cinSkipBtn);
+
             cinCanvas.SetActive(false);
 
             // 6. Modals
@@ -637,6 +680,7 @@ namespace Edenfall.Editor
             GameObject aureliaObj,
             CharacterVisualRig rig,
             AureliaRigController rigCtrl,
+            AureliaLiveRig liveRig,
             Transform hotspotContainer)
         {
             var vnRoot = new GameObject("--- VN SCENE CONTROLLER ---");
@@ -652,6 +696,7 @@ namespace Edenfall.Editor
             SetPrivateField(vnCtrl, "distantSpireRenderer", spireR);
             SetPrivateField(vnCtrl, "aureliaRoot", aureliaObj);
             SetPrivateField(vnCtrl, "aureliaRig", rig);
+            SetPrivateField(vnCtrl, "aureliaLiveRig", liveRig);
             SetPrivateField(vnCtrl, "aureliaRigController", rigCtrl);
             SetPrivateField(vnCtrl, "aureliaDef", aureliaDef);
             SetPrivateField(vnCtrl, "aureliaDialogueTree", aureliaTree);

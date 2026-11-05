@@ -48,7 +48,8 @@ namespace Edenfall.Editor
                     }
 
                     // For production VN character sprites, anchor pivot at the bottom (feet / baseline)
-                    if (path.Contains("Aurelia_VN_FullBody") || path.Contains("Aurelia_VN_Portrait"))
+                    if (path.Contains("Aurelia_VN_FullBody") || path.Contains("Aurelia_VN_Portrait") ||
+                        path.Contains("Aurelia_HalfBody_Canonical") || path.Contains("Aurelia_FullBody_Canonical"))
                     {
                         var settings = new TextureImporterSettings();
                         importer.ReadTextureSettings(settings);
@@ -105,15 +106,25 @@ namespace Edenfall.Editor
             string pDir = $"{ArtRoot}/Characters/Aurelia/Portraits";
             aurelia.portraits.Clear();
 
-            AddPortrait(aurelia, CharacterEmotion.Neutral, $"{pDir}/Portrait_Aurelia_Neutral.png");
-            AddPortrait(aurelia, CharacterEmotion.Happy, $"{pDir}/Portrait_Aurelia_Smile.png");
-            AddPortrait(aurelia, CharacterEmotion.Thoughtful, $"{pDir}/Portrait_Aurelia_Regal.png");
-            AddPortrait(aurelia, CharacterEmotion.Melancholy, $"{pDir}/Portrait_Aurelia_Sorrow.png");
-            AddPortrait(aurelia, CharacterEmotion.Surprised, $"{pDir}/Portrait_Aurelia_Surprise.png");
-            AddPortrait(aurelia, CharacterEmotion.Introspective, $"{pDir}/Portrait_Aurelia_Blush.png");
+            // Link 16 canonical anime portraits
+            AddPortrait(aurelia, CharacterEmotion.Gentle, $"{pDir}/Portrait_Normal.png");
+            AddPortrait(aurelia, CharacterEmotion.Smiling, $"{pDir}/Portrait_Smile.png");
+            AddPortrait(aurelia, CharacterEmotion.Happy, $"{pDir}/Portrait_Happy.png");
+            AddPortrait(aurelia, CharacterEmotion.Excited, $"{pDir}/Portrait_Excited.png");
+            AddPortrait(aurelia, CharacterEmotion.Surprised, $"{pDir}/Portrait_Surprised.png");
+            AddPortrait(aurelia, CharacterEmotion.Confused, $"{pDir}/Portrait_Confused.png");
+            AddPortrait(aurelia, CharacterEmotion.Thinking, $"{pDir}/Portrait_Thinking.png");
+            AddPortrait(aurelia, CharacterEmotion.Concerned, $"{pDir}/Portrait_Concerned.png");
+            AddPortrait(aurelia, CharacterEmotion.Flustered, $"{pDir}/Portrait_Shy.png");
+            AddPortrait(aurelia, CharacterEmotion.Blushing, $"{pDir}/Portrait_Blush.png");
+            AddPortrait(aurelia, CharacterEmotion.Seductive, $"{pDir}/Portrait_Seductive.png");
+            AddPortrait(aurelia, CharacterEmotion.Sad, $"{pDir}/Portrait_Sad.png");
+            AddPortrait(aurelia, CharacterEmotion.Angry, $"{pDir}/Portrait_Angry.png");
+            AddPortrait(aurelia, CharacterEmotion.Hurt, $"{pDir}/Portrait_Hurt.png");
+            AddPortrait(aurelia, CharacterEmotion.Satisfied, $"{pDir}/Portrait_Satisfied.png");
 
             EditorUtility.SetDirty(aurelia);
-            Debug.Log($"[EdenfallArtImporter] Linked {aurelia.portraits.Count} portraits to Character_Aurelia.");
+            Debug.Log($"[EdenfallArtImporter] Linked {aurelia.portraits.Count} canonical portraits to Character_Aurelia.");
         }
 
         private static void AddPortrait(CharacterDefinition def, CharacterEmotion emotion, string path)
@@ -135,24 +146,21 @@ namespace Edenfall.Editor
 
         private static void LinkCinematicCG()
         {
-            string cgPath = $"{ArtRoot}/Cinematics/CG_SolsticeVow.png";
+            string cgDir = $"{ArtRoot}/Cinematics";
+            string cgPath = $"{cgDir}/CG_01_FirstMeeting.png";
             var cgSprite = AssetDatabase.LoadAssetAtPath<Sprite>(cgPath);
-            if (cgSprite == null)
-            {
-                Debug.LogWarning("[EdenfallArtImporter] CG Sprite not found at: " + cgPath);
-                return;
-            }
+            if (cgSprite == null) cgSprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{cgDir}/CG_SolsticeVow.png");
 
             string scenePath = $"{DataRoot}/Cinematics/Cinematic_GardenSolace.asset";
             var sceneData = AssetDatabase.LoadAssetAtPath<CinematicSceneData>(scenePath);
-            if (sceneData != null)
+            if (sceneData != null && cgSprite != null)
             {
                 foreach (var slide in sceneData.slides)
                 {
                     slide.cgSprite = cgSprite;
                 }
                 EditorUtility.SetDirty(sceneData);
-                Debug.Log("[EdenfallArtImporter] Linked CG_SolsticeVow to Cinematic_GardenSolace slides.");
+                Debug.Log("[EdenfallArtImporter] Linked CG to Cinematic_GardenSolace slides.");
             }
         }
     }

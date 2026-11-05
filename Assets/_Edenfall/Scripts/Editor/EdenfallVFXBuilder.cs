@@ -110,6 +110,7 @@ namespace Edenfall.Editor
 
             var renderer = vfxObj.GetComponent<ParticleSystemRenderer>();
             renderer.sortingOrder = 15;
+            renderer.sharedMaterial = GetOrCreateParticleMaterial("VFX_CelestialSparks", "Particle_Spark.png", true, new Color(1.0f, 0.92f, 0.55f, 0.9f));
 
             return vfxObj;
         }
@@ -143,6 +144,7 @@ namespace Edenfall.Editor
 
             var renderer = vfxObj.GetComponent<ParticleSystemRenderer>();
             renderer.sortingOrder = 16;
+            renderer.sharedMaterial = GetOrCreateParticleMaterial("VFX_FallingPetals", "Particle_Petal.png", false, new Color(1.0f, 0.88f, 0.85f, 0.85f));
 
             return vfxObj;
         }
@@ -171,8 +173,48 @@ namespace Edenfall.Editor
 
             var renderer = vfxObj.GetComponent<ParticleSystemRenderer>();
             renderer.sortingOrder = 14;
+            renderer.sharedMaterial = GetOrCreateParticleMaterial("VFX_AltarLeylineAura", "Particle_Glow.png", true, new Color(0.70f, 0.85f, 1.0f, 0.8f));
 
             return vfxObj;
+        }
+
+        public static Material GetOrCreateParticleMaterial(string matName, string texName, bool additive, Color tint)
+        {
+            string matPath = $"Assets/_Edenfall/Materials/{matName}.mat";
+            var mat = AssetDatabase.LoadAssetAtPath<Material>(matPath);
+            var shader = Shader.Find("Universal Render Pipeline/Particles/Unlit");
+            if (shader == null) shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default");
+            if (shader == null) shader = Shader.Find("Sprites/Default");
+
+            if (mat == null)
+            {
+                mat = new Material(shader);
+                if (!Directory.Exists("Assets/_Edenfall/Materials"))
+                {
+                    Directory.CreateDirectory("Assets/_Edenfall/Materials");
+                }
+                AssetDatabase.CreateAsset(mat, matPath);
+            }
+            else
+            {
+                mat.shader = shader;
+            }
+
+            var tex = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/_Edenfall/Art/VFX/{texName}");
+            if (tex != null)
+            {
+                if (mat.HasProperty("_BaseMap")) mat.SetTexture("_BaseMap", tex);
+                if (mat.HasProperty("_MainTex")) mat.SetTexture("_MainTex", tex);
+            }
+
+            if (mat.HasProperty("_BaseColor")) mat.SetColor("_BaseColor", tint);
+            if (mat.HasProperty("_Color")) mat.SetColor("_Color", tint);
+
+            if (mat.HasProperty("_Surface")) mat.SetFloat("_Surface", 1f); // Transparent
+            if (mat.HasProperty("_Blend")) mat.SetFloat("_Blend", additive ? 1f : 0f);
+
+            EditorUtility.SetDirty(mat);
+            return mat;
         }
     }
 }

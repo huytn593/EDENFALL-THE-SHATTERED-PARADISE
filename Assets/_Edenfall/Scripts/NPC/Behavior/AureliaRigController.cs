@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Edenfall.NPC.Behavior
 {
-    [RequireComponent(typeof(CharacterVisualRig))]
     public class AureliaRigController : MonoBehaviour
     {
         [SerializeField] private CharacterVisualRig visualRig;
+        [SerializeField] private AureliaLiveRig liveRig;
         [SerializeField] private NPCController npcController;
 
         [Header("Aurelia Emotion Presets")]
@@ -42,6 +42,7 @@ namespace Edenfall.NPC.Behavior
         private void Awake()
         {
             if (visualRig == null) visualRig = GetComponent<CharacterVisualRig>();
+            if (liveRig == null) liveRig = GetComponent<AureliaLiveRig>();
             if (npcController == null) npcController = GetComponent<NPCController>();
         }
 
@@ -67,26 +68,72 @@ namespace Edenfall.NPC.Behavior
         {
             if (speaker == null || speaker.characterId != "aurelia") return;
 
-            Sprite targetEyes = GetEyesForEmotion(node.emotion);
-            Sprite targetMouth = (node.emotion == CharacterEmotion.Happy || node.emotion == CharacterEmotion.Loving) 
-                ? mouthSmile 
-                : mouthNeutral;
+            if (liveRig != null)
+            {
+                var targetState = MapEmotionToAnimationState(node.emotion, true);
+                liveRig.SetAnimationState(targetState);
+                liveRig.SetTalking(true);
+            }
 
-            visualRig.SetExpression(node.emotion, targetEyes, targetMouth);
-            visualRig.SetTalking(true);
+            if (visualRig != null)
+            {
+                Sprite targetEyes = GetEyesForEmotion(node.emotion);
+                Sprite targetMouth = (node.emotion == CharacterEmotion.Happy || node.emotion == CharacterEmotion.Loving) 
+                    ? mouthSmile 
+                    : mouthNeutral;
+
+                visualRig.SetExpression(node.emotion, targetEyes, targetMouth);
+                visualRig.SetTalking(true);
+            }
         }
 
         private void HandleDialogueFinished()
         {
-            visualRig.SetTalking(false);
-            visualRig.SetExpression(CharacterEmotion.Neutral, eyesNeutral, mouthNeutral);
+            if (liveRig != null)
+            {
+                liveRig.SetTalking(false);
+                liveRig.SetAnimationState(AureliaAnimationState.Idle_Normal);
+            }
+
+            if (visualRig != null)
+            {
+                visualRig.SetTalking(false);
+                visualRig.SetExpression(CharacterEmotion.Neutral, eyesNeutral, mouthNeutral);
+            }
         }
 
         public void ApplyEmotion(CharacterEmotion emotion)
         {
-            Sprite targetEyes = GetEyesForEmotion(emotion);
-            Sprite targetMouth = (emotion == CharacterEmotion.Happy || emotion == CharacterEmotion.Loving) ? mouthSmile : mouthNeutral;
-            visualRig.SetExpression(emotion, targetEyes, targetMouth);
+            if (liveRig != null)
+            {
+                var targetState = MapEmotionToAnimationState(emotion, false);
+                liveRig.SetAnimationState(targetState);
+            }
+
+            if (visualRig != null)
+            {
+                Sprite targetEyes = GetEyesForEmotion(emotion);
+                Sprite targetMouth = (emotion == CharacterEmotion.Happy || emotion == CharacterEmotion.Loving) ? mouthSmile : mouthNeutral;
+                visualRig.SetExpression(emotion, targetEyes, targetMouth);
+            }
+        }
+
+        public AureliaAnimationState MapEmotionToAnimationState(CharacterEmotion emotion, bool isTalking)
+        {
+            return emotion switch
+            {
+                CharacterEmotion.Happy or CharacterEmotion.Smiling => isTalking ? AureliaAnimationState.Talk_Normal : AureliaAnimationState.Idle_Happy,
+                CharacterEmotion.Flustered or CharacterEmotion.Blushing => isTalking ? AureliaAnimationState.Talk_Shy : AureliaAnimationState.Idle_Shy,
+                CharacterEmotion.Intimate or CharacterEmotion.Loving => AureliaAnimationState.React_Romantic,
+                CharacterEmotion.Surprised => AureliaAnimationState.React_Surprised,
+                CharacterEmotion.Serious => isTalking ? AureliaAnimationState.Talk_Serious : AureliaAnimationState.Idle_Normal,
+                CharacterEmotion.Melancholic => AureliaAnimationState.React_Sad,
+                CharacterEmotion.Angry => AureliaAnimationState.React_Angry,
+                CharacterEmotion.Confused => AureliaAnimationState.React_Surprised,
+                CharacterEmotion.Pensive => AureliaAnimationState.Gesture_Thinking,
+                CharacterEmotion.Gentle => isTalking ? AureliaAnimationState.Talk_Gentle : AureliaAnimationState.Idle_Normal,
+                _ => isTalking ? AureliaAnimationState.Talk_Normal : AureliaAnimationState.Idle_Normal
+            };
         }
 
         private Sprite GetEyesForEmotion(CharacterEmotion emotion)
@@ -96,7 +143,7 @@ namespace Edenfall.NPC.Behavior
                 CharacterEmotion.Happy => eyesSmile != null ? eyesSmile : eyesNeutral,
                 CharacterEmotion.Loving => eyesSmile != null ? eyesSmile : eyesNeutral,
                 CharacterEmotion.Serious => eyesSerious != null ? eyesSerious : eyesNeutral,
-                CharacterEmotion.Melancholy => eyesSorrow != null ? eyesSorrow : eyesNeutral,
+                CharacterEmotion.Melancholic => eyesSorrow != null ? eyesSorrow : eyesNeutral,
                 CharacterEmotion.Blushing => eyesBlush != null ? eyesBlush : eyesNeutral,
                 CharacterEmotion.Surprised => eyesSurprise != null ? eyesSurprise : eyesNeutral,
                 _ => eyesNeutral
