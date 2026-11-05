@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea9821e4bd97e54985469e5ea68dc74, type: 3}
+  m_Name: Location_CelestialAltar
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.World.LocationDefinition
+  locationId: loc_celestial_altar
+  nameVi: "\u0110\xE0i T\u1EBF Tinh T\xFA"
+  nameEn: Celestial Altar
+  descriptionVi: "B\u1EC7 \u0111\xE1 c\u1EA9m th\u1EA1ch thi\xEAng li\xEAng n\u01A1i
+    m\u1EA3nh l\xF5i m\u1EB7t tr\u1EDDi r\u1EF1c ch\xE1y v\u0129nh h\u1EB1ng."
+  descriptionEn: A consecrated marble altar housing the pulsating celestial sun shard.
+  locationType: 1
+  backgroundSprite: {fileID: 21300000, guid: 2398cb416c447a04facc10ab1b359e7f, type: 3}
+  distantSpireSprite: {fileID: 0}
+  ambientTint: {r: 1, g: 1, b: 1, a: 1}
+  hasFallingPetals: 1
+  hasCelestialSparks: 1
+  isUnlockedByDefault: 1
+  requiredAffectionToUnlock: 0
+  unlockRequirementDescriptionVi: 
+  unlockRequirementDescriptionEn: 
+  hotspots:
+  - hotspotId: spot_altar_resonate
+    titleVi: "C\u1EA3m nh\u1EADn nh\u1ECBp \u0111\u1EADp \u0111\u1ECBa m\u1EA1ch"
+    titleEn: Sense Leyline Pulse
+    screenPosition: {x: 0, y: 0}
+    actionType: inspect
+    targetParameter: 

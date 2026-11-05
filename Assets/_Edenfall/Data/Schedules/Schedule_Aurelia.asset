@@ -20,20 +20,20 @@ MonoBehaviour:
       mai ban s\u1EDBm"
     poseAnimation: kneeling
   - timeOfDay: 1
-    locationName: Shattered Spire
+    locationName: Celestial Altar
     targetPosition: {x: 0, y: 0}
     activityDescription: "Ki\u1EC3m tra c\xE1c v\u1EBFt r\u1EA1n tr\xEAn L\xF5i Tinh
       T\xFA v\xE0 \u0111i\u1EC1u h\xF2a t\u1EA7n s\u1ED1"
     poseAnimation: standing
   - timeOfDay: 2
-    locationName: Sanctuary Terrace
+    locationName: Solstice Balcony
     targetPosition: {x: 5, y: -2}
     activityDescription: "\u0110\u1EE9ng b\xEAn ban c\xF4ng ng\u1EAFm nh\xECn qu\u1EA7n
       \u0111\u1EA3o bay tr\xF4i d\u1EA1t l\xFAc ho\xE0ng h\xF4n"
     poseAnimation: pensive
   - timeOfDay: 3
-    locationName: Inner Spire Sanctuary
+    locationName: Aurelia's Private Chamber
     targetPosition: {x: 0, y: 2}
-    activityDescription: "Ngh\u1EC9 ng\u01A1i b\xEAn trong \u0111\u1EA1i \u0111i\u1EC7n
-      d\u01B0\u1EDBi s\u1EF1 b\u1EA3o h\u1ED9 c\u1EE7a tr\u1EADn ph\xE1p"
+    activityDescription: "Ngh\u1EC9 ng\u01A1i b\xEAn trong ph\xF2ng ri\xEAng d\u01B0\u1EDBi
+      l\xE0n gi\xF3 m\xE1t v\xE0 \xE1nh tr\u0103ng thanh"
     poseAnimation: resting

@@ -9,18 +9,18 @@ namespace Edenfall.Cinematics
 {
     public class SolsticeCinematicSequence : MonoBehaviour
     {
-        [Header("Cinematic Cameras & Targets")]
+        [Header("Cinematic Cameras & First-Person POV Anchors")]
         [SerializeField] private CameraController2D cameraController;
-        [SerializeField] private Transform wideShotAnchor;
-        [SerializeField] private Transform aureliaCloseUpAnchor;
-        [SerializeField] private Transform twoShotAnchor;
+        [SerializeField] private Transform povWideAnchor;
+        [SerializeField] private Transform povCloseUpAnchor;
+        [SerializeField] private Transform povIntimateAnchor;
 
-        [Header("Character Rigs")]
+        [Header("Character Rig (Heroine Focus)")]
         [SerializeField] private CharacterVisualRig aureliaRig;
-        [SerializeField] private CharacterVisualRig echoRig;
 
         [Header("UI & Subtitles")]
         [SerializeField] private GameObject cinematicOverlayCanvas;
+        [SerializeField] private Image fullScreenCGImage;
         [SerializeField] private Text subtitleText;
         [SerializeField] private Text speakerText;
         [SerializeField] private Button skipButton;
@@ -37,23 +37,23 @@ namespace Edenfall.Cinematics
         public void ConfigureSequence(
             CameraController2D camCtrl,
             Transform wideAnchor,
-            Transform aureliaAnchor,
-            Transform twoAnchor,
+            Transform closeUpAnchor,
+            Transform intimateAnchor,
             CharacterVisualRig aurelia,
-            CharacterVisualRig echo,
             GameObject overlayCanvas,
+            Image cgImg,
             Text subtitle,
             Text speaker,
             Button skipBtn,
             Sprite cg)
         {
             cameraController = camCtrl;
-            wideShotAnchor = wideAnchor;
-            aureliaCloseUpAnchor = aureliaAnchor;
-            twoShotAnchor = twoAnchor;
+            povWideAnchor = wideAnchor;
+            povCloseUpAnchor = closeUpAnchor;
+            povIntimateAnchor = intimateAnchor;
             aureliaRig = aurelia;
-            echoRig = echo;
             cinematicOverlayCanvas = overlayCanvas;
+            fullScreenCGImage = cgImg;
             subtitleText = subtitle;
             speakerText = speaker;
             skipButton = skipBtn;
@@ -89,7 +89,6 @@ namespace Edenfall.Cinematics
         {
             isSkipping = false;
 
-            // 1. Enter Cinematic Mode
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.SetGameMode(GameMode.Cinematic);
@@ -100,8 +99,19 @@ namespace Edenfall.Cinematics
                 cinematicOverlayCanvas.SetActive(true);
             }
 
-            // Shot 1: Wide Establishing Shot (3.0s)
-            SetCameraAnchor(wideShotAnchor, 8f, 2.5f);
+            if (fullScreenCGImage != null)
+            {
+                fullScreenCGImage.gameObject.SetActive(false);
+            }
+
+            if (aureliaRig != null && !aureliaRig.gameObject.activeInHierarchy)
+            {
+                aureliaRig.gameObject.SetActive(true);
+            }
+
+            // Shot 1: First-Person Wide Establishing Shot (3.0s)
+            // Player looks across the Dawn Sanctuary terrace towards Aurelia
+            SetCameraAnchor(povWideAnchor, 5.0f, 2.5f);
             SetSubtitle("Aurelia", "Dawn Sanctuary... Trái tim của vương quốc từng rực sáng dưới hào quang Tinh Tú.", 
                 "Dawn Sanctuary... The radiant heart of a realm once bathed in celestial luminescence.");
             
@@ -114,8 +124,9 @@ namespace Edenfall.Cinematics
             yield return WaitOrSkip(3.2f);
             if (isSkipping) goto FinishCinematic;
 
-            // Shot 2: Close-up on Aurelia turning (3.5s)
-            SetCameraAnchor(aureliaCloseUpAnchor, 5.0f, 4.0f);
+            // Shot 2: First-Person Close-Up (3.5s)
+            // Aurelia turns directly towards player (the camera)
+            SetCameraAnchor(povCloseUpAnchor, 3.8f, 3.5f);
             if (aureliaRig != null)
             {
                 aureliaRig.SetFacing(true);
@@ -126,47 +137,58 @@ namespace Edenfall.Cinematics
             SetSubtitle("Aurelia", "Ngươi đã tới, Echo. Lời tiên tri của Mặt Trời Vỡ Vụn cuối cùng đã tìm thấy người kế thừa.",
                 "You have arrived, Echo. The prophecy of the Shattered Sun has at last found its rightful heir.");
 
+            yield return WaitOrSkip(3.6f);
+            if (aureliaRig != null) aureliaRig.SetTalking(false);
+            if (isSkipping) goto FinishCinematic;
+
+            // Shot 3: Intimate POV Approach (3.8s)
+            // Aurelia steps closer, gazing deeply into the player's eyes
+            SetCameraAnchor(povIntimateAnchor, 3.0f, 4.0f);
+            if (aureliaRig != null)
+            {
+                aureliaRig.SetExpression(CharacterEmotion.Loving);
+                aureliaRig.SetTalking(true);
+            }
+
+            SetSubtitle("Aurelia", "Dù thiên đàng này đã vỡ vụn... ta vẫn luôn muốn cùng ngươi thề nguyện dưới bầu trời này.",
+                "Though this paradise lies fractured... I still long to share this sacred vow with you.");
+
             yield return WaitOrSkip(3.8f);
             if (aureliaRig != null) aureliaRig.SetTalking(false);
             if (isSkipping) goto FinishCinematic;
 
-            // Shot 3: Two-Shot Meeting at Terrace (4.0s)
-            SetCameraAnchor(twoShotAnchor, 6.0f, 3.5f);
-            if (echoRig != null)
+            // Shot 4: Event CG Climactic Reveal
+            if (fullScreenCGImage != null && cgSprite != null)
             {
-                echoRig.SetFacing(false);
-                echoRig.SetExpression(CharacterEmotion.Serious);
+                fullScreenCGImage.sprite = cgSprite;
+                fullScreenCGImage.gameObject.SetActive(true);
             }
 
-            SetSubtitle("Echo", "Dù thiên đàng này đã vỡ vụn, ta nguyện cùng nàng thắp lại ánh sáng rực rỡ thuở ban sơ.",
-                "Though this paradise lies fractured, I vow to rekindle its primordial radiance beside you.");
-
-            yield return WaitOrSkip(4.0f);
-            if (isSkipping) goto FinishCinematic;
-
-            // Shot 4: Mutual Vow & Starlight Flare (3.0s)
-            if (aureliaRig != null)
-            {
-                aureliaRig.SetExpression(CharacterEmotion.Loving);
-            }
-
-            SetSubtitle("Aurelia", "Vậy hãy để lời thề này được khắc ghi mãi mãi giữa các vì sao.",
-                "Then let this sacred vow be etched forever across the boundless stars.");
+            SetSubtitle("Aurelia", "Hãy để lời thề này được khắc ghi mãi mãi giữa các vì sao.",
+                "Let this sacred vow be etched forever across the boundless stars.");
 
             yield return WaitOrSkip(3.5f);
 
         FinishCinematic:
-            // Unlock CG in Gallery
             if (GalleryManager.Instance != null && !string.IsNullOrEmpty(sceneId))
             {
                 GalleryManager.Instance.UnlockScene(sceneId);
             }
 
-            // Restore Camera to Player
-            var player = GameObject.FindWithTag("Player") ?? GameObject.Find("Player");
-            if (cameraController != null && player != null)
+            if (fullScreenCGImage != null)
             {
-                cameraController.SetTarget(player.transform);
+                fullScreenCGImage.gameObject.SetActive(false);
+            }
+
+            if (aureliaRig != null && !aureliaRig.gameObject.activeInHierarchy)
+            {
+                aureliaRig.gameObject.SetActive(true);
+            }
+
+            // Restore POV Camera
+            if (cameraController != null && povWideAnchor != null)
+            {
+                cameraController.SetTarget(povWideAnchor);
                 cameraController.SetSpeed(4f);
             }
 
@@ -186,22 +208,31 @@ namespace Edenfall.Cinematics
 
         private void SetCameraAnchor(Transform anchor, float orthoSize, float speed)
         {
-            if (cameraController == null || anchor == null) return;
-            cameraController.SetTarget(anchor);
-            cameraController.SetSpeed(speed);
+            if (cameraController != null && anchor != null)
+            {
+                cameraController.SetTarget(anchor);
+                cameraController.SetSpeed(speed);
+            }
+
+            var cam = Camera.main;
+            if (cam != null && cam.orthographic)
+            {
+                cam.orthographicSize = orthoSize;
+            }
         }
 
         private void SetSubtitle(string speaker, string viText, string enText)
         {
             bool isVi = LocalizationManager.Instance == null || LocalizationManager.Instance.CurrentLanguage == LocalizationManager.Language.Vietnamese;
+
             if (speakerText != null) speakerText.text = speaker;
             if (subtitleText != null) subtitleText.text = isVi ? viText : enText;
         }
 
-        private IEnumerator WaitOrSkip(float duration)
+        private IEnumerator WaitOrSkip(float seconds)
         {
             float elapsed = 0f;
-            while (elapsed < duration && !isSkipping)
+            while (elapsed < seconds && !isSkipping)
             {
                 elapsed += Time.deltaTime;
                 yield return null;

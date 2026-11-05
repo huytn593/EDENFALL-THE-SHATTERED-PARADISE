@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c42dac352e3154aac8417ba59e92ab, type: 3}
+  m_Name: Event_MorningIntimacy
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.Events.MatureEventDefinition
+  eventId: evt_aurelia_morning_intimacy
+  titleVi: "Kho\u1EA3nh Kh\u1EAFc Th\xE2n M\u1EADt B\xEAn N\xE0ng Aurelia"
+  titleEn: Morning Intimacy with Aurelia
+  characterId: aurelia
+  summaryVi: "Kho\u1EA3nh kh\u1EAFc ng\u1ECDt ng\xE0o b\xEAn Aurelia t\u1EA1i ph\xF2ng
+    ngh\u1EC9 ri\xEAng t\u01B0 d\u01B0\u1EDBi \xE1nh n\u1EAFng s\u01B0\u01A1ng mai
+    r\u1EF1c r\u1EE1."
+  summaryEn: A sweet, intimate morning shared with Aurelia in her private sanctuary
+    chamber.
+  minAffection: 35
+  minTrust: 30
+  minComfort: 25
+  requiredLocationId: loc_aurelia_chamber
+  requiredTimeOfDay: 0
+  anyTimeOfDay: 1
+  bonusAffection: 20
+  bonusTrust: 15
+  bonusComfort: 20
+  memoryRecordVi: "\u0110\xE3 tr\u1EA3i qua kho\u1EA3nh kh\u1EAFc th\xE2n m\u1EADt
+    ri\xEAng t\u01B0 c\xF9ng Aurelia trong s\u01B0\u01A1ng mai."
+  memoryRecordEn: Shared an intimate private morning memory with Aurelia in her chamber.
+  mainCGSprite: {fileID: 21300000, guid: 0530f62400346ad458bd3cacae734a02, type: 3}
+  slides:
+  - characterEmotion: 1
+    narrationVi: "\xC1nh n\u1EAFng ban mai r\u1ECDi qua v\xF2m c\u1ED9t \u0111\xE1
+      c\u1EA9m th\u1EA1ch tr\u1EAFng, nhu\u1ED9m v\xE0ng nh\u1EEFng c\xE1nh hoa t\u1EED
+      \u0111\u1EB1ng \u0111ang \u0111ung \u0111\u01B0a trong gi\xF3 tho\u1EA3ng.
+      Aurelia t\u1EF1a m\xECnh tr\xEAn chi\u1EBFc gi\u01B0\u1EDDng l\u1EE5a \xEAm
+      \xE1i, ng\u01B0\u1EDBc m\u1EAFt nh\xECn b\u1EA1n v\u1EDBi n\u1EE5 c\u01B0\u1EDDi
+      d\u1ECBu d\xE0ng."
+    narrationEn: Gentle morning sunbeams filter through classical marble archways,
+      illuminating purple wisteria petals. Aurelia rests softly upon the silk bed,
+      gazing up at you with an intimate, radiant smile.
+    dialogueVi: "Ch\xE0o bu\u1ED5i s\xE1ng, ng\u01B0\u1EDDi th\u01B0\u01A1ng c\u1EE7a
+      ta... Ng\u01B0\u01A1i \u0111\xE3 th\u1EE9c gi\u1EA5c r\u1ED3i sao? Ta c\u1EE9
+      ng\u1EE1 ng\u01B0\u01A1i v\u1EABn c\xF2n \u0111ang ch\xECm trong gi\u1EA5c
+      m\u01A1 v\u1EC1 v\xF9ng \u0111\u1EA5t v\u1EE1 v\u1EE5n n\xE0y."
+    dialogueEn: Good morning, my sweet... Are you finally awake? I thought you were
+      still lost in dreams of this shattered world.
+    cameraEffect: 1
+    isFadeToBlack: 0
+    slideCG: {fileID: 0}
+  - characterEmotion: 2
+    narrationVi: "\u0110\xF4i m\xE1 n\xE0ng ph\u01A1n ph\u1EDBt \u1EEDng h\u1ED3ng.
+      N\xE0ng kh\u1EBD \u0111\u01B0a b\xE0n tay thon th\u1EA3 v\u1EC1 ph\xEDa b\u1EA1n,
+      t\u1EEBng \u0111\u1EA7u ng\xF3n tay l\u1EA5p l\xE1nh b\u1EE5i tinh t\xFA \u1EA5m
+      \xE1p."
+    narrationEn: A delicate rose blush warms her cheeks. She extends a graceful hand
+      toward you, her fingertips glowing with warm celestial light.
+    dialogueVi: "H\xE3y l\u1EA1i g\u1EA7n \u0111\xE2y... Ch\u1EC9 c\u1EA7n c\xF3
+      ng\u01B0\u01A1i k\u1EC1 b\xEAn, g\xE1nh n\u1EB7ng c\u1EE7a d\xF2ng d\xF5i H\u1EA1
+      Ch\xED d\u01B0\u1EDDng nh\u01B0 tan bi\u1EBFn v\xE0o h\u01B0 v\xF4."
+    dialogueEn: Come closer... As long as you are by my side, the weight of the Solstice
+      bloodline feels lighter than air.
+    cameraEffect: 3
+    isFadeToBlack: 0
+    slideCG: {fileID: 0}
+  - characterEmotion: 11
+    narrationVi: "C\u0103n ph\xF2ng ng\u1EADp tr\xE0n h\u01A1i th\u1EDF \u1EA5m \xE1p
+      v\xE0 h\u01B0\u01A1ng hoa ly thanh tao. Kho\u1EA3nh kh\u1EAFc hai tr\xE1i tim
+      h\xF2a chung nh\u1ECBp \u0111\u1EADp d\u01B0\u1EDBi \xE1nh m\u1EB7t tr\u1EDDi
+      r\u1EA1ng \u0111\xF4ng."
+    narrationEn: The chamber fills with gentle warmth and the delicate fragrance
+      of lilies. A private vow shared between two souls beneath the morning sun.
+    dialogueVi: "Ta y\xEAu ng\u01B0\u01A1i... H\xE3y m\xE3i l\xE0 v\u1EA7ng th\xE1i
+      d\u01B0\u01A1ng c\u1EE7a ri\xEAng ta, Echo nh\xE9."
+    dialogueEn: I love you... Please remain my own personal sun forever, Echo.
+    cameraEffect: 4
+    isFadeToBlack: 1
+    slideCG: {fileID: 0}

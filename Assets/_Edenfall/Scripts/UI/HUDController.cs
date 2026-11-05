@@ -16,6 +16,7 @@ namespace Edenfall.UI
         [SerializeField] private Text restorationPercentText;
 
         [Header("Modals")]
+        [SerializeField] private GameObject locationMapModal;
         [SerializeField] private GameObject relationshipModal;
         [SerializeField] private GameObject questModal;
         [SerializeField] private GameObject inventoryModal;
@@ -63,6 +64,7 @@ namespace Edenfall.UI
             var kb = Keyboard.current;
             if (kb != null)
             {
+                if (kb.mKey.wasPressedThisFrame) ToggleLocationMap();
                 if (kb.jKey.wasPressedThisFrame) ToggleQuestModal();
                 if (kb.rKey.wasPressedThisFrame) ToggleRelationshipModal();
                 if (kb.iKey.wasPressedThisFrame) ToggleInventoryModal();
@@ -132,6 +134,7 @@ namespace Edenfall.UI
             if (visionLayerText != null) visionLayerText.text = layer.ToDisplayString(isVi);
         }
 
+        public void ToggleLocationMap() => ToggleModal(locationMapModal);
         public void ToggleRelationshipModal() => ToggleModal(relationshipModal);
         public void ToggleQuestModal() => ToggleModal(questModal);
         public void ToggleInventoryModal() => ToggleModal(inventoryModal);

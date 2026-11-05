@@ -5,9 +5,11 @@ using Edenfall.Characters;
 using Edenfall.Cinematics;
 using Edenfall.Core;
 using Edenfall.Dialogue;
+using Edenfall.Events;
 using Edenfall.Inventory;
 using Edenfall.NPC.Scheduling;
 using Edenfall.Quests;
+using Edenfall.World;
 using UnityEditor;
 using UnityEngine;
 
@@ -27,6 +29,8 @@ namespace Edenfall.Editor
             GenerateCinematics();
             GenerateDialogueTrees();
             GenerateSchedules();
+            GenerateLocations();
+            GenerateMatureEvents();
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -41,6 +45,8 @@ namespace Edenfall.Editor
             EnsureDir($"{DataRoot}/Cinematics");
             EnsureDir($"{DataRoot}/Dialogue");
             EnsureDir($"{DataRoot}/Schedules");
+            EnsureDir($"{DataRoot}/Locations");
+            EnsureDir($"{DataRoot}/Events");
         }
 
         private static void EnsureDir(string path)
@@ -396,7 +402,7 @@ namespace Edenfall.Editor
                 new ScheduleEntry
                 {
                     timeOfDay = TimeOfDay.Afternoon,
-                    locationName = "Shattered Spire",
+                    locationName = "Celestial Altar",
                     targetPosition = new Vector2(0f, 0f),
                     activityDescription = "Kiểm tra các vết rạn trên Lõi Tinh Tú và điều hòa tần số",
                     poseAnimation = "standing"
@@ -404,7 +410,7 @@ namespace Edenfall.Editor
                 new ScheduleEntry
                 {
                     timeOfDay = TimeOfDay.Evening,
-                    locationName = "Sanctuary Terrace",
+                    locationName = "Solstice Balcony",
                     targetPosition = new Vector2(5f, -2f),
                     activityDescription = "Đứng bên ban công ngắm nhìn quần đảo bay trôi dạt lúc hoàng hôn",
                     poseAnimation = "pensive"
@@ -412,13 +418,139 @@ namespace Edenfall.Editor
                 new ScheduleEntry
                 {
                     timeOfDay = TimeOfDay.Night,
-                    locationName = "Inner Spire Sanctuary",
+                    locationName = "Aurelia's Private Chamber",
                     targetPosition = new Vector2(0f, 2f),
-                    activityDescription = "Nghỉ ngơi bên trong đại điện dưới sự bảo hộ của trận pháp",
+                    activityDescription = "Nghỉ ngơi bên trong phòng riêng dưới làn gió mát và ánh trăng thanh",
                     poseAnimation = "resting"
                 }
             };
             SaveAsset(sched, $"{DataRoot}/Schedules/Schedule_Aurelia.asset");
+        }
+
+        private static void GenerateLocations()
+        {
+            string artEnv = "Assets/_Edenfall/Art/Environment";
+
+            // 1. Dawn Garden
+            var locGarden = ScriptableObject.CreateInstance<LocationDefinition>();
+            locGarden.locationId = "loc_dawn_garden";
+            locGarden.nameVi = "Vườn Bình Minh";
+            locGarden.nameEn = "Dawn Garden";
+            locGarden.descriptionVi = "Khu vườn thánh địa tĩnh lặng tràn ngập hương hoa ly tinh tú và làn gió sương mai.";
+            locGarden.descriptionEn = "A serene sanctuary terrace perfumed with celestial lilies under soft morning light.";
+            locGarden.locationType = LocationType.Garden;
+            locGarden.backgroundSprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{artEnv}/Sanctuary_MarblePlatform.png");
+            locGarden.distantSpireSprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{artEnv}/Spire_SolsticeDistant.png");
+            locGarden.isUnlockedByDefault = true;
+            locGarden.hotspots = new List<LocationHotspot>
+            {
+                new LocationHotspot { hotspotId = "spot_garden_talk", titleVi = "Trò chuyện cùng Aurelia", titleEn = "Talk with Aurelia", actionType = "talk" },
+                new LocationHotspot { hotspotId = "spot_garden_lily", titleVi = "Ngắm hoa ly tinh tú", titleEn = "Admire Celestial Lilies", actionType = "inspect" }
+            };
+            SaveAsset(locGarden, $"{DataRoot}/Locations/Location_DawnGarden.asset");
+
+            // 2. Celestial Altar
+            var locAltar = ScriptableObject.CreateInstance<LocationDefinition>();
+            locAltar.locationId = "loc_celestial_altar";
+            locAltar.nameVi = "Đài Tế Tinh Tú";
+            locAltar.nameEn = "Celestial Altar";
+            locAltar.descriptionVi = "Bệ đá cẩm thạch thiêng liêng nơi mảnh lõi mặt trời rực cháy vĩnh hằng.";
+            locAltar.descriptionEn = "A consecrated marble altar housing the pulsating celestial sun shard.";
+            locAltar.locationType = LocationType.Altar;
+            locAltar.backgroundSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Edenfall/Art/Props/Prop_CelestialAltar.png");
+            locAltar.isUnlockedByDefault = true;
+            locAltar.hotspots = new List<LocationHotspot>
+            {
+                new LocationHotspot { hotspotId = "spot_altar_resonate", titleVi = "Cảm nhận nhịp đập địa mạch", titleEn = "Sense Leyline Pulse", actionType = "inspect" }
+            };
+            SaveAsset(locAltar, $"{DataRoot}/Locations/Location_CelestialAltar.asset");
+
+            // 3. Solstice Balcony
+            var locBalcony = ScriptableObject.CreateInstance<LocationDefinition>();
+            locBalcony.locationId = "loc_solstice_balcony";
+            locBalcony.nameVi = "Ban Công Hạ Chí";
+            locBalcony.nameEn = "Solstice Balcony";
+            locBalcony.descriptionVi = "Ban công trên cao nhìn ra tòa tháp tinh tú vỡ vụn và những hòn đảo trôi lơ lửng.";
+            locBalcony.descriptionEn = "A high terrace overlooking the Shattered Spire and drifting crystalline islands.";
+            locBalcony.locationType = LocationType.Balcony;
+            locBalcony.backgroundSprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{artEnv}/Spire_SolsticeDistant.png");
+            locBalcony.isUnlockedByDefault = true;
+            locBalcony.hotspots = new List<LocationHotspot>
+            {
+                new LocationHotspot { hotspotId = "spot_balcony_vow", titleVi = "Khắc ghi lời thề Tinh Tú", titleEn = "Recite Solstice Vow", actionType = "event" }
+            };
+            SaveAsset(locBalcony, $"{DataRoot}/Locations/Location_SolsticeBalcony.asset");
+
+            // 4. Aurelia's Chamber
+            var locChamber = ScriptableObject.CreateInstance<LocationDefinition>();
+            locChamber.locationId = "loc_aurelia_chamber";
+            locChamber.nameVi = "Khu Nghỉ Dưỡng Nàng Aurelia";
+            locChamber.nameEn = "Aurelia's Private Chamber";
+            locChamber.descriptionVi = "Phòng nghỉ trang nhã với giường lụa thêu chỉ vàng, hoa tử đằng buông rủ và ban công đón nắng sớm.";
+            locChamber.descriptionEn = "An intimate sanctuary bedchamber draped in silk and wisteria overlooking the celestial sky.";
+            locChamber.locationType = LocationType.PrivateChamber;
+            locChamber.backgroundSprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{artEnv}/Chamber_SolsticeHeir.png");
+            locChamber.isUnlockedByDefault = false;
+            locChamber.requiredAffectionToUnlock = 35;
+            locChamber.unlockRequirementDescriptionVi = "Đạt 35 Điểm Tình Cảm cùng Aurelia";
+            locChamber.unlockRequirementDescriptionEn = "Reach 35 Affection with Aurelia";
+            locChamber.hotspots = new List<LocationHotspot>
+            {
+                new LocationHotspot { hotspotId = "spot_chamber_intimacy", titleVi = "Tâm sự riêng tư buổi sớm", titleEn = "Private Morning Intimacy", actionType = "event" }
+            };
+            SaveAsset(locChamber, $"{DataRoot}/Locations/Location_AureliaChamber.asset");
+        }
+
+        private static void GenerateMatureEvents()
+        {
+            var evtIntimacy = ScriptableObject.CreateInstance<MatureEventDefinition>();
+            evtIntimacy.eventId = "evt_aurelia_morning_intimacy";
+            evtIntimacy.titleVi = "Khoảnh Khắc Thân Mật Bên Nàng Aurelia";
+            evtIntimacy.titleEn = "Morning Intimacy with Aurelia";
+            evtIntimacy.characterId = "aurelia";
+            evtIntimacy.summaryVi = "Khoảnh khắc ngọt ngào bên Aurelia tại phòng nghỉ riêng tư dưới ánh nắng sương mai rực rỡ.";
+            evtIntimacy.summaryEn = "A sweet, intimate morning shared with Aurelia in her private sanctuary chamber.";
+            evtIntimacy.minAffection = 35;
+            evtIntimacy.minTrust = 30;
+            evtIntimacy.minComfort = 25;
+            evtIntimacy.requiredLocationId = "loc_aurelia_chamber";
+            evtIntimacy.requiredTimeOfDay = TimeOfDay.Morning;
+            evtIntimacy.anyTimeOfDay = true;
+            evtIntimacy.mainCGSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Edenfall/Art/Cinematics/CG_ChamberIntimacy.png");
+
+            evtIntimacy.slides = new List<MatureEventSlide>
+            {
+                new MatureEventSlide
+                {
+                    characterEmotion = CharacterEmotion.Smiling,
+                    narrationVi = "Ánh nắng ban mai rọi qua vòm cột đá cẩm thạch trắng, nhuộm vàng những cánh hoa tử đằng đang đung đưa trong gió thoảng. Aurelia tựa mình trên chiếc giường lụa êm ái, ngước mắt nhìn bạn với nụ cười dịu dàng.",
+                    narrationEn = "Gentle morning sunbeams filter through classical marble archways, illuminating purple wisteria petals. Aurelia rests softly upon the silk bed, gazing up at you with an intimate, radiant smile.",
+                    dialogueVi = "Chào buổi sáng, người thương của ta... Ngươi đã thức giấc rồi sao? Ta cứ ngỡ ngươi vẫn còn đang chìm trong giấc mơ về vùng đất vỡ vụn này.",
+                    dialogueEn = "Good morning, my sweet... Are you finally awake? I thought you were still lost in dreams of this shattered world.",
+                    cameraEffect = CameraEffect.ZoomIn
+                },
+                new MatureEventSlide
+                {
+                    characterEmotion = CharacterEmotion.Flustered,
+                    narrationVi = "Đôi má nàng phơn phớt ửng hồng. Nàng khẽ đưa bàn tay thon thả về phía bạn, từng đầu ngón tay lấp lánh bụi tinh tú ấm áp.",
+                    narrationEn = "A delicate rose blush warms her cheeks. She extends a graceful hand toward you, her fingertips glowing with warm celestial light.",
+                    dialogueVi = "Hãy lại gần đây... Chỉ cần có ngươi kề bên, gánh nặng của dòng dõi Hạ Chí dường như tan biến vào hư vô.",
+                    dialogueEn = "Come closer... As long as you are by my side, the weight of the Solstice bloodline feels lighter than air.",
+                    cameraEffect = CameraEffect.Radiance
+                },
+                new MatureEventSlide
+                {
+                    characterEmotion = CharacterEmotion.Intimate,
+                    isFadeToBlack = true,
+                    narrationVi = "Căn phòng ngập tràn hơi thở ấm áp và hương hoa ly thanh tao. Khoảnh khắc hai trái tim hòa chung nhịp đập dưới ánh mặt trời rạng đông.",
+                    narrationEn = "The chamber fills with gentle warmth and the delicate fragrance of lilies. A private vow shared between two souls beneath the morning sun.",
+                    dialogueVi = "Ta yêu ngươi... Hãy mãi là vầng thái dương của riêng ta, Echo nhé.",
+                    dialogueEn = "I love you... Please remain my own personal sun forever, Echo.",
+                    cameraEffect = CameraEffect.FadeBlack
+                }
+            };
+
+            SaveAsset(evtIntimacy, $"{DataRoot}/Events/Event_MorningIntimacy.asset");
         }
 
         private static void SaveAsset(Object asset, string path)

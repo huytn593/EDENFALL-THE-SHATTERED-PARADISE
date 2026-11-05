@@ -164,7 +164,10 @@ namespace Edenfall.Characters
             if (isTalking)
             {
                 if (talkCoroutine != null) StopCoroutine(talkCoroutine);
-                talkCoroutine = StartCoroutine(TalkRoutine());
+                if (gameObject.activeInHierarchy)
+                {
+                    talkCoroutine = StartCoroutine(TalkRoutine());
+                }
             }
             else
             {

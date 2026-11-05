@@ -33,16 +33,4 @@ MonoBehaviour:
   startingRespect: 45
   startingComfort: 35
   startingConflict: 5
-  portraits:
-  - emotion: 0
-    portraitSprite: {fileID: 21300000, guid: c7ed1eb10391edd4daf6dad1890fc7e0, type: 3}
-  - emotion: 1
-    portraitSprite: {fileID: 21300000, guid: 71ba5634d5ac2c746a7d8d26aca2a6f0, type: 3}
-  - emotion: 5
-    portraitSprite: {fileID: 21300000, guid: 5c55b57c30b106f4195be16d7e7a1a72, type: 3}
-  - emotion: 9
-    portraitSprite: {fileID: 21300000, guid: c2d3d4df0ed000e44870ea8ea5b5e67b, type: 3}
-  - emotion: 7
-    portraitSprite: {fileID: 21300000, guid: 8eaf5d3d4fcd75e4ebb60713688101b5, type: 3}
-  - emotion: 6
-    portraitSprite: {fileID: 21300000, guid: ccb1057aef1a99541881b0bfac36dc77, type: 3}
+  portraits: []
