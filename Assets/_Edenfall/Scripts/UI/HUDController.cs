@@ -1,5 +1,6 @@
 using Edenfall.Core;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Edenfall.UI
@@ -59,12 +60,15 @@ namespace Edenfall.UI
 
         private void Update()
         {
-            // Hotkeys for UI modals
-            if (Input.GetKeyDown(KeyCode.J)) ToggleQuestModal();
-            if (Input.GetKeyDown(KeyCode.R)) ToggleRelationshipModal();
-            if (Input.GetKeyDown(KeyCode.I)) ToggleInventoryModal();
-            if (Input.GetKeyDown(KeyCode.G)) ToggleGalleryModal();
-            if (Input.GetKeyDown(KeyCode.Escape)) ToggleSaveLoadModal();
+            var kb = Keyboard.current;
+            if (kb != null)
+            {
+                if (kb.jKey.wasPressedThisFrame) ToggleQuestModal();
+                if (kb.rKey.wasPressedThisFrame) ToggleRelationshipModal();
+                if (kb.iKey.wasPressedThisFrame) ToggleInventoryModal();
+                if (kb.gKey.wasPressedThisFrame) ToggleGalleryModal();
+                if (kb.escapeKey.wasPressedThisFrame) ToggleSaveLoadModal();
+            }
         }
 
         public void RefreshAllText()

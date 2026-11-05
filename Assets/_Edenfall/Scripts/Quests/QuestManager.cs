@@ -39,6 +39,7 @@ namespace Edenfall.Quests
             if (Instance == null)
             {
                 Instance = this;
+                transform.SetParent(null);
                 DontDestroyOnLoad(gameObject);
                 InitializeQuests();
             }

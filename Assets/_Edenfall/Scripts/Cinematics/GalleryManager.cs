@@ -18,6 +18,7 @@ namespace Edenfall.Cinematics
             if (Instance == null)
             {
                 Instance = this;
+                transform.SetParent(null);
                 DontDestroyOnLoad(gameObject);
             }
             else

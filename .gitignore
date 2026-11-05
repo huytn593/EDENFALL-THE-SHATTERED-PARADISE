@@ -12,9 +12,11 @@
 # Visual Studio / Rider / VSCode
 .vs/
 .idea/
+.vscode/
 *.csproj
 *.unityproj
 *.sln
+*.slnx
 *.suo
 *.user
 *.userprefs

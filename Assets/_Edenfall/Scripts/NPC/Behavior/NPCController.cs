@@ -19,6 +19,27 @@ namespace Edenfall.NPC.Behavior
         public RelationshipModel Relationship => relationship;
         public CharacterDefinition Definition => definition;
 
+        public void Initialize(CharacterDefinition def, NPCSchedule sched, DialogueTree dt)
+        {
+            definition = def;
+            schedule = sched;
+            dialogueTree = dt;
+
+            if (definition != null)
+            {
+                relationship = new RelationshipModel(definition.characterId)
+                {
+                    affection = definition.startingAffection,
+                    trust = definition.startingTrust,
+                    familiarity = definition.startingFamiliarity,
+                    respect = definition.startingRespect,
+                    comfort = definition.startingComfort,
+                    conflict = definition.startingConflict
+                };
+                relationship.EvaluateStage();
+            }
+        }
+
         [Header("Movement & Interaction")]
         [SerializeField] private float moveSpeed = 2f;
         [SerializeField] private float interactionRadius = 2.5f;

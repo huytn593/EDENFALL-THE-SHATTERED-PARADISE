@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda78baf9279d1040a36baae328fa568, type: 3}
+  m_Name: Character_Teresa
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.Characters.CharacterDefinition
+  characterId: teresa
+  characterName: Commander Teresa
+  title: Iron Warden of the Vanguard
+  role: Bastion Commander & Military Protector
+  age: 26
+  bio: "Th\u1EE7 l\u0129nh d\xE0y d\u1EA1n s\u01B0\u01A1ng gi\xF3 c\u1EE7a ti\u1EC3u
+    \u0111o\xE0n Thi\u1EBFt V\u1EC7. Teresa tin r\u1EB1ng th\u1EBF gi\u1EDBi b\u1ECB
+    h\u1EE7y ho\u1EA1i b\u1EDFi c\xE1c ph\xE1p s\u01B0 li\u1EC1u l\u0129nh, v\xE0
+    c\xF4 \u0111\u1EB7t ni\u1EC1m tin duy nh\u1EA5t v\xE0o th\xE9p gai, chi\u1EBFn
+    thu\u1EADt v\xE0 k\u1EF7 lu\u1EADt th\xE9p."
+  defaultLocation: Vanguard Bastion
+  favoriteGiftItemIds:
+  - starmetal_ingot
+  - vanguard_aegis
+  - astral_draught
+  startingAffection: 12
+  startingTrust: 25
+  startingFamiliarity: 15
+  startingRespect: 50
+  startingComfort: 18
+  startingConflict: 15
+  portraits: []

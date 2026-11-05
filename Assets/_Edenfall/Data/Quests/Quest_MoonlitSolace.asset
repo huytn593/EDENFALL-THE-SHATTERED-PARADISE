@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1163d07f1026e4995aa951efbfbef6, type: 3}
+  m_Name: Quest_MoonlitSolace
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.Quests.QuestDefinition
+  questId: quest_garden_solace
+  titleVi: "Kh\u1EAFc Kh\u1EAFc B\xECnh Y\xEAn D\u01B0\u1EDBi Tr\u0103ng"
+  titleEn: Moonlit Sanctuary Solace
+  category: 1
+  summaryVi: "Aurelia th\u01B0\u1EDDng d\u1EA1o b\u01B0\u1EDBc t\u1EA1i V\u01B0\u1EDDn
+    B\xECnh Minh khi ho\xE0ng h\xF4n bu\xF4ng xu\u1ED1ng. H\xE3y t\xECm n\xE0ng v\xE0
+    chia s\u1EBB t\xE2m s\u1EF1 b\xEAn lu\u1ED1ng hoa ly."
+  summaryEn: Aurelia visits the Dawn Garden when evening arrives. Spend an intimate
+    moment together amidst celestial lilies.
+  steps:
+  - descriptionVi: "\u0110\u1EBFn V\u01B0\u1EDDn B\xECnh Minh v\xE0o bu\u1ED5i Chi\u1EC1u
+      T\u1ED1i ho\u1EB7c \u0110\xEAm"
+    descriptionEn: Meet Aurelia at Dawn Garden during Evening or Night
+    targetLocationId: loc_garden
+    isCompleted: 0
+  - descriptionVi: "Tr\xF2 chuy\u1EC7n th\xE2n m\u1EADt v\xE0 kh\u1EAFc ghi k\u1EF7
+      ni\u1EC7m t\xECnh c\u1EA3m"
+    descriptionEn: Converse intimately with Aurelia and unlock the terrace memory
+    targetLocationId: loc_garden
+    isCompleted: 0
+  rewardTextVi: "M\u1EDF Kh\xF3a Ho\u1EA1t C\u1EA3nh CG 'Moonlit Sanctuary Solace'
+    & T\u0103ng S\xE2u T\xECnh C\u1EA3m"
+  rewardTextEn: 'Unlock Cinematic CG: ''Moonlit Sanctuary Solace'' & Deepen Bond'
+  rewardResonance: 20

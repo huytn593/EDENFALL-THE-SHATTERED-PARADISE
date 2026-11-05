@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d6514f2a2cae245bd2bc883f4b069c, type: 3}
+  m_Name: Cinematic_AureliaGarden
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.Cinematics.CinematicSceneData
+  sceneId: cg_aurelia_garden
+  titleVi: "Kh\u1EAFc Kh\u1EAFc B\xECnh Y\xEAn D\u01B0\u1EDBi \xC1nh Tr\u0103ng"
+  titleEn: Moonlit Sanctuary Solace
+  characterId: aurelia
+  characterName: Aurelia
+  descriptionVi: "Kho\u1EA3nh kh\u1EAFc l\xE3ng m\u1EA1n b\xEAn Aurelia t\u1EA1i
+    ban c\xF4ng V\u01B0\u1EDDn B\xECnh Minh d\u01B0\u1EDBi l\xE0n gi\xF3 ng\xE1t
+    h\u01B0\u01A1ng hoa ly v\xE0 b\u1EA7u tr\u1EDDi sao v\u1EE5n v\u1EE1."
+  descriptionEn: An intimate evening in Dawn Garden with Aurelia beneath cascading
+    celestial lilies and shattered constellations.
+  minAffection: 20
+  minTrust: 0
+  hasTimeRequirement: 0
+  requiredTimeOfDay: 2
+  requiredLocationId: 
+  slides:
+  - characterEmotion: 6
+    narrationVi: "Gi\xF3 \u0111\xEAm n\u01A1i V\u01B0\u1EDDn B\xECnh Minh ph\u1EA3ng
+      ph\u1EA5t h\u01B0\u01A1ng th\u01A1m ng\xE0o ng\u1EA1t c\u1EE7a hoa ly tinh
+      t\xFA. Aurelia t\u1EF1a m\xECnh v\xE0o lan can c\u1EA9m th\u1EA1ch tr\u1EAFng,
+      \u0111\xF4i m\u1EAFt m\u01A1 m\xE0ng nh\xECn v\u1EC1 nh\u1EEFng h\xF2n \u0111\u1EA3o
+      bay l\u01A1 l\u1EEDng gi\u1EEFa v\xF4 t\u1EADn."
+    narrationEn: The night air in Dawn Garden is thick with the sweet scent of blooming
+      celestial lilies. Aurelia stands by the white balustrade, gazing toward drifting
+      islands in the void.
+    dialogueVi: "M\u1ED7i khi nh\xECn v\xE0o kho\u1EA3ng kh\xF4ng v\xF4 t\u1EADn
+      \u1EA5y... ta l\u1EA1i t\u1EF1 h\u1ECFi li\u1EC7u thi\xEAn \u0111\u01B0\u1EDDng
+      n\xE0y c\xF3 th\u1EF1c s\u1EF1 c\u1EA7n \u0111\u01B0\u1EE3c c\u1EE9u r\u1ED7i,
+      hay v\u1EA1n v\u1EADt ch\u1EC9 \u0111ang m\u1EC7t m\u1ECFi mu\u1ED1n ch\xECm
+      v\xE0o gi\u1EA5c ng\u1EE7 ngh\xECn thu?"
+    dialogueEn: Every time I look into the void... I wonder if paradise truly wants
+      to be saved, or if it is merely exhausted.
+    cameraEffect: 0
+    cgSprite: {fileID: 0}
+  - characterEmotion: 2
+    narrationVi: "Khi b\u1EA1n b\u01B0\u1EDBc t\u1EDBi b\xEAn c\u1EA1nh, nh\u1EEFng
+      ng\xF3n tay nh\u1EB9 nh\xE0ng ch\u1EA1m v\xE0o t\xE0 \xE1o l\u1EE5a m\u1EC1m
+      m\u1EA1i c\u1EE7a n\xE0ng. M\u1ED9t l\xE0n s\xF3ng b\u1ED1i r\u1ED1i kh\u1EBD
+      l\u01B0\u1EDBt qua \xE1nh m\u1EAFt Aurelia, nh\u01B0ng n\xE0ng kh\xF4ng h\u1EC1
+      r\xFAt tay l\u1EA1i."
+    narrationEn: As you step beside her, your fingers lightly brush against the soft
+      silk of her sleeve. A subtle tremor passes through her breath, yet she does
+      not draw away.
+    dialogueVi: "Ng\u01B0\u01A1i lu\xF4n mang \u0111\u1EBFn c\u1EA3m gi\xE1c ki\xEAn
+      \u0111\u1ECBnh v\xE0 t\u0129nh l\u1EB7ng \u1EA5y, Echo. Gi\u1EEFa m\u1ED9t
+      th\u1EBF gi\u1EDBi \u0111\u1ED5 n\xE1t v\xE0 nh\u1EEFng ti\u1EBFng th\xE9t
+      g\xE0o c\u1EE7a b\u1EA1o lo\u1EA1n... \u1EDF b\xEAn c\u1EA1nh ng\u01B0\u01A1i
+      khi\u1EBFn l\xF2ng ta b\xECnh y\xEAn l\u1EA1 th\u01B0\u1EDDng."
+    dialogueEn: You have that quiet resolve, Echo. In a realm full of shattering
+      skies and warlords, your presence is... soothing.
+    cameraEffect: 2
+    cgSprite: {fileID: 0}
+  - characterEmotion: 3
+    narrationVi: "Aurelia quay h\u1EB3n ng\u01B0\u1EDDi l\u1EA1i, v\u01B0\u01A1ng
+      mi\u1EC7n ho\xE0ng kim tr\xEAn m\xE1i t\xF3c n\xE0ng t\u1ECFa ra h\u01A1i \u1EA5m
+      thu\u1EA7n khi\u1EBFt c\u1EE7a v\u1EA7ng th\xE1i d\u01B0\u01A1ng. N\xE0ng kh\u1EBD
+      v\u01B0\u01A1n b\xE0n tay thon th\u1EA3, \u0111an ch\u1EB7t nh\u1EEFng ng\xF3n
+      tay v\xE0o tay b\u1EA1n."
+    narrationEn: She turns to face you completely. The tiara in her golden hair glows
+      with pure solar warmth. She extends her slender hand, entwining her fingers
+      with yours.
+    dialogueVi: "H\xE3y h\u1EE9a v\u1EDBi ta m\u1ED9t \u0111i\u1EC1u, Echo c\u1EE7a
+      ta. D\xF9 c\xE1nh c\u1ED5ng Nh\u1EADt Th\u1EF1c ph\xEDa tr\u01B0\u1EDBc c\xF3
+      mang l\u1EA1i b\u1EA5t c\u1EE9 tai \u01B0\u01A1ng n\xE0o... ng\u01B0\u01A1i
+      c\u0169ng s\u1EBD m\xE3i \u1EDF c\u1EA1nh ta, c\xF3 \u0111\u01B0\u1EE3c kh\xF4ng?"
+    dialogueEn: Promise me one thing, my Echo. Whatever happens when the Eclipse
+      Gate opens... you will stay by my side, will you?
+    cameraEffect: 3
+    cgSprite: {fileID: 0}
+  - characterEmotion: 11
+    narrationVi: "Hai ng\u01B0\u1EDDi \u0111\u1EE9ng s\xE1t b\xEAn nhau tr\xEAn ban
+      c\xF4ng l\u1ED9ng gi\xF3, nh\u1EEFng c\xE1nh hoa r\u01A1i l\u1EA5p l\xE1nh
+      nh\u01B0 b\u1EE5i sao bao ph\u1EE7 l\u1EA5y c\xE1i \xF4m d\u1ECBu d\xE0ng v\xE0
+      l\u1EDDi \u01B0\u1EDBc th\u1EC1 v\u01B0\u1EE3t qua c\u1EA3 s\u1EF1 s\u1EE5p
+      \u0111\u1ED5 c\u1EE7a thi\xEAn \u0111\u01B0\u1EDDng."
+    narrationEn: The two of you stand close together on the moonlit terrace as glowing
+      petals drift around you, sealed by an embrace that transcends the fall of paradise.
+    dialogueVi: "C\u1EA3m \u01A1n ng\u01B0\u01A1i \u0111\xE3 t\u1EC9nh gi\u1EA5c,
+      Echo... L\u1EA7n \u0111\u1EA7u ti\xEAn sau ba tr\u0103m n\u0103m c\xF4 \u0111\u1ED9c,
+      tr\xE1i tim ta l\u1EA1i th\u1EA5y \u1EA5m \xE1p \u0111\u1EBFn nh\u01B0\u1EDDng
+      n\xE0y."
+    dialogueEn: Thank you for awakening, my Echo. For the first time in centuries,
+      my heart feels warmth once more.
+    cameraEffect: 4
+    cgSprite: {fileID: 0}
+  bonusAffection: 15
+  bonusTrust: 15
+  completionMemoryVi: "\u0110\xE3 c\xF9ng Aurelia th\u1EC1 \u01B0\u1EDBc m\u1ED9t
+    l\xF2ng b\xEAn ban c\xF4ng ng\u1EADp \xE1nh hoa ly."
+  completionMemoryEn: Shared an intimate vow beneath the celestial lilies with Aurelia.

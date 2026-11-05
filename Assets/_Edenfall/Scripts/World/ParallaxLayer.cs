@@ -11,6 +11,11 @@ namespace Edenfall.World
 
         private Vector3 lastCameraPosition;
 
+        public void SetMultiplier(Vector2 mult)
+        {
+            parallaxMultiplier = mult;
+        }
+
         private void Start()
         {
             if (targetCamera == null)

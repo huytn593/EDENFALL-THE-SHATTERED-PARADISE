@@ -2,6 +2,7 @@ using Edenfall.Core;
 using Edenfall.NPC.Behavior;
 using Edenfall.World;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Edenfall.Gameplay
 {
@@ -46,9 +47,40 @@ namespace Edenfall.Gameplay
                 return;
             }
 
-            // Input
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
+            // Modern Input System Handling
+            float h = 0f;
+            float v = 0f;
+            bool wantSprint = false;
+            bool triggerVision = false;
+            bool triggerTime = false;
+            bool triggerInteract = false;
+
+            var kb = Keyboard.current;
+            if (kb != null)
+            {
+                if (kb.aKey.isPressed || kb.leftArrowKey.isPressed) h -= 1f;
+                if (kb.dKey.isPressed || kb.rightArrowKey.isPressed) h += 1f;
+                if (kb.wKey.isPressed || kb.upArrowKey.isPressed) v += 1f;
+                if (kb.sKey.isPressed || kb.downArrowKey.isPressed) v -= 1f;
+
+                wantSprint = kb.leftShiftKey.isPressed && (h != 0 || v != 0);
+                triggerVision = kb.tabKey.wasPressedThisFrame || kb.vKey.wasPressedThisFrame;
+                triggerTime = kb.tKey.wasPressedThisFrame;
+                triggerInteract = kb.eKey.wasPressedThisFrame || kb.spaceKey.wasPressedThisFrame;
+            }
+
+            var pad = Gamepad.current;
+            if (pad != null)
+            {
+                var stick = pad.leftStick.ReadValue();
+                if (Mathf.Abs(stick.x) > 0.15f) h = stick.x;
+                if (Mathf.Abs(stick.y) > 0.15f) v = stick.y;
+
+                if (pad.leftShoulder.isPressed) wantSprint = true;
+                if (pad.buttonNorth.wasPressedThisFrame) triggerVision = true;
+                if (pad.buttonSouth.wasPressedThisFrame) triggerInteract = true;
+            }
+
             moveInput = new Vector2(h, v).normalized;
 
             if (moveInput.sqrMagnitude > 0.01f)
@@ -57,7 +89,6 @@ namespace Edenfall.Gameplay
             }
 
             // Sprinting & Stamina
-            bool wantSprint = Input.GetKey(KeyCode.LeftShift) && IsMoving;
             if (wantSprint && currentStamina > 5f)
             {
                 isSprinting = true;
@@ -70,7 +101,7 @@ namespace Edenfall.Gameplay
             }
 
             // Vision Layer Toggle
-            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.V))
+            if (triggerVision)
             {
                 if (GameManager.Instance != null)
                 {
@@ -79,7 +110,7 @@ namespace Edenfall.Gameplay
             }
 
             // Advance Time Shortcut (T key for simulation exploration)
-            if (Input.GetKeyDown(KeyCode.T))
+            if (triggerTime)
             {
                 if (GameManager.Instance != null)
                 {
@@ -88,7 +119,7 @@ namespace Edenfall.Gameplay
             }
 
             // Interact
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space))
+            if (triggerInteract)
             {
                 TryInteract();
             }

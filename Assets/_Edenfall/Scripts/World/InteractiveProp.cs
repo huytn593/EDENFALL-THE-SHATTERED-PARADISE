@@ -54,6 +54,12 @@ namespace Edenfall.World
             }
         }
 
+        public string PropId => propId;
+        public string PropNameVi => propNameVi;
+        public string PropNameEn => propNameEn;
+        public string DescriptionVi => descriptionVi;
+        public string DescriptionEn => descriptionEn;
+
         public void Interact()
         {
             if (oneTimeOnly && isExhausted)

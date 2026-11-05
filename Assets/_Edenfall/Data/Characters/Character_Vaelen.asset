@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda78baf9279d1040a36baae328fa568, type: 3}
+  m_Name: Character_Vaelen
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.Characters.CharacterDefinition
+  characterId: vaelen
+  characterName: Archivist Vaelen
+  title: Curator of the Celestial Vaults
+  role: Elder Astrologer & Keeper of Shards
+  age: 42
+  bio: "H\u1ECDc gi\u1EA3 uy\xEAn b\xE1c \u0111\xE3 d\xE0nh h\u01A1n ba th\u1EBF
+    k\u1EF7 ghi ch\xE9p l\u1EA1i qu\u1EF9 \u0111\u1EA1o c\u1EE7a nh\u1EEFng v\xEC
+    sao t\xE0n l\u1EE5i. \xD4ng v\u1EADn h\xE0nh Th\u01B0\u1EDBc \u0110o Tinh T\xFA
+    v\xE0 n\u1EAFm gi\u1EEF b\xED m\u1EADt v\u1EC1 c\xE1c \u0111\u1EA1i c\u1ED5 tr\u1EADn."
+  defaultLocation: Celestial Archive
+  favoriteGiftItemIds:
+  - leyline_shard
+  - chronos_parchment
+  - miniature_chronos
+  startingAffection: 20
+  startingTrust: 45
+  startingFamiliarity: 35
+  startingRespect: 60
+  startingComfort: 40
+  startingConflict: 0
+  portraits: []

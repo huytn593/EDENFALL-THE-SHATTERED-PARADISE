@@ -31,5 +31,17 @@ namespace Edenfall.Gameplay
         {
             target = newTarget;
         }
+
+        public void SetBounds(Vector2 min, Vector2 max)
+        {
+            useBounds = true;
+            minBounds = min;
+            maxBounds = max;
+        }
+
+        public void SetSpeed(float speed)
+        {
+            smoothSpeed = speed;
+        }
     }
 }
