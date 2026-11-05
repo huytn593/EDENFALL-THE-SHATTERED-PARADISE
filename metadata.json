@@ -1,0 +1,8 @@
+{
+  "name": "Edenfall: The Shattered Paradise",
+  "description": "Interactive narrative RPG and exploration adventure in Dawn Sanctuary featuring Aurelia, branching dialogue, NPC memory & relationships, quest engine, and world state systems.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
