@@ -182,8 +182,8 @@ namespace Edenfall.Editor
         {
             string matPath = $"Assets/_Edenfall/Materials/{matName}.mat";
             var mat = AssetDatabase.LoadAssetAtPath<Material>(matPath);
-            var shader = Shader.Find("Universal Render Pipeline/Particles/Unlit");
-            if (shader == null) shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default");
+            var shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default");
+            if (shader == null) shader = Shader.Find("Universal Render Pipeline/Particles/Unlit");
             if (shader == null) shader = Shader.Find("Sprites/Default");
 
             if (mat == null)

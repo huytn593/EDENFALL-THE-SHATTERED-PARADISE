@@ -434,7 +434,7 @@ namespace Edenfall.Editor
             vlg.childForceExpandHeight = false;
 
             // Wire DialogueUI fields
-            SetPrivateField(diagUI, "dialoguePanel", diagObj);
+            SetPrivateField(diagUI, "dialoguePanel", boxObj);
             SetPrivateField(diagUI, "panelCanvasGroup", diagCg);
             SetPrivateField(diagUI, "speakerNameText", spkNameText);
             SetPrivateField(diagUI, "nameBadgeObj", badgeObj);
@@ -447,7 +447,8 @@ namespace Edenfall.Editor
             SetPrivateField(diagUI, "logButton", logBtn);
             SetPrivateField(diagUI, "hideUIButton", hideBtn);
 
-            diagObj.SetActive(false);
+            boxObj.SetActive(false);
+            diagObj.SetActive(true);
 
             // 3. Hotspots Container (Left-floating interaction actions)
             var hotspotCanvas = new GameObject("HotspotsCanvas");

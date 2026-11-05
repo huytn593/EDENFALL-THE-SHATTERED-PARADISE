@@ -15,7 +15,7 @@ namespace Edenfall.Editor
         [MenuItem("Edenfall/Import and Configure Art Assets")]
         public static void ImportAndConfigureAll()
         {
-            Debug.Log("[EdenfallArtImporter] Starting texture import configuration...");
+            Debug.Log("[EdenfallArtImporter] Starting production texture import configuration (Phase 3.6.2)...");
             ConfigureTexturesUnder(ArtRoot);
             AssetDatabase.Refresh();
 
@@ -36,59 +36,69 @@ namespace Edenfall.Editor
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
                 var importer = AssetImporter.GetAtPath(path) as TextureImporter;
-                if (importer != null)
+                if (importer == null) continue;
+
+                bool changed = false;
+
+                if (importer.textureType != TextureImporterType.Sprite)
                 {
-                    bool changed = false;
+                    importer.textureType = TextureImporterType.Sprite;
+                    importer.spriteImportMode = SpriteImportMode.Single;
+                    changed = true;
+                }
 
-                    if (importer.textureType != TextureImporterType.Sprite)
+                // 4K Max Resolution for GTX 1650 4GB support
+                if (importer.maxTextureSize != 4096)
+                {
+                    importer.maxTextureSize = 4096;
+                    changed = true;
+                }
+
+                // High Quality Desktop Compression (BC7 / ASTC / CompressedHQ)
+                if (importer.textureCompression != TextureImporterCompression.CompressedHQ)
+                {
+                    importer.textureCompression = TextureImporterCompression.CompressedHQ;
+                    changed = true;
+                }
+
+                // Anchor pivot: Bottom-Center (0.5, 0.0) for Character Master & Rig layers
+                bool isCharacterBody = path.Contains("Aurelia_HalfBody") || path.Contains("Aurelia_FullBody") ||
+                                       path.Contains("Aurelia_VN_Portrait") || path.Contains("Aurelia_VN_FullBody") ||
+                                       path.Contains("Layer_Body") || path.Contains("Layer_Cape") || path.Contains("Layer_Skirt");
+
+                if (isCharacterBody)
+                {
+                    var settings = new TextureImporterSettings();
+                    importer.ReadTextureSettings(settings);
+                    if (settings.spriteAlignment != (int)SpriteAlignment.BottomCenter)
                     {
-                        importer.textureType = TextureImporterType.Sprite;
-                        importer.spriteImportMode = SpriteImportMode.Single;
+                        settings.spriteAlignment = (int)SpriteAlignment.BottomCenter;
+                        importer.SetTextureSettings(settings);
                         changed = true;
                     }
+                }
 
-                    // For production VN character sprites, anchor pivot at the bottom (feet / baseline)
-                    if (path.Contains("Aurelia_VN_FullBody") || path.Contains("Aurelia_VN_Portrait") ||
-                        path.Contains("Aurelia_HalfBody_Canonical") || path.Contains("Aurelia_FullBody_Canonical"))
-                    {
-                        var settings = new TextureImporterSettings();
-                        importer.ReadTextureSettings(settings);
-                        if (settings.spriteAlignment != (int)SpriteAlignment.BottomCenter)
-                        {
-                            settings.spriteAlignment = (int)SpriteAlignment.BottomCenter;
-                            importer.SetTextureSettings(settings);
-                            changed = true;
-                        }
-                    }
+                if (!importer.alphaIsTransparency)
+                {
+                    importer.alphaIsTransparency = true;
+                    changed = true;
+                }
 
-                    if (!importer.alphaIsTransparency)
-                    {
-                        importer.alphaIsTransparency = true;
-                        changed = true;
-                    }
+                if (importer.mipmapEnabled)
+                {
+                    importer.mipmapEnabled = false;
+                    changed = true;
+                }
 
-                    if (importer.mipmapEnabled)
-                    {
-                        importer.mipmapEnabled = false;
-                        changed = true;
-                    }
+                if (importer.filterMode != FilterMode.Bilinear)
+                {
+                    importer.filterMode = FilterMode.Bilinear;
+                    changed = true;
+                }
 
-                    if (importer.filterMode != FilterMode.Bilinear)
-                    {
-                        importer.filterMode = FilterMode.Bilinear;
-                        changed = true;
-                    }
-
-                    if (importer.textureCompression != TextureImporterCompression.Uncompressed)
-                    {
-                        importer.textureCompression = TextureImporterCompression.Uncompressed;
-                        changed = true;
-                    }
-
-                    if (changed)
-                    {
-                        importer.SaveAndReimport();
-                    }
+                if (changed)
+                {
+                    importer.SaveAndReimport();
                 }
             }
         }

@@ -13,13 +13,13 @@ namespace Edenfall.World
     {
         [Header("Staging Configuration")]
         [SerializeField] private StagingMode mode = StagingMode.DialoguePortrait;
-        [SerializeField] private float groundContactY = -2.10f;
-        [SerializeField] private float portraitBaselineY = -2.35f;
-        [SerializeField] private float targetPortraitHeightPercent = 0.75f; // 75% of screen height
+        [SerializeField] private float groundContactY = -3.20f;
+        [SerializeField] private float portraitBaselineY = -4.95f;
+        [SerializeField] private float targetPortraitHeightPercent = 0.85f; // 85% of screen height for intimate VN staging
         [SerializeField] private float targetFullBodyHeightPercent = 0.65f;
 
         [Header("Framing Offsets")]
-        [SerializeField] private Vector3 screenCenterOffset = new Vector3(0.5f, 0f, 0f); // Center-right for VN
+        [SerializeField] private Vector3 screenCenterOffset = new Vector3(0.15f, 0f, 0f); // Intimate center framing for VN
 
         [Header("Allowed Idle Movement Bounds")]
         [SerializeField] private Vector2 maxIdleTranslationOffset = new Vector2(0.05f, 0.08f);

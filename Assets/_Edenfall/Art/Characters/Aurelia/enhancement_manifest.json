@@ -1,0 +1,610 @@
+{
+  "pipeline_version": "3.6.2",
+  "super_resolution_engine": "Real-ESRGAN NCNN Vulkan",
+  "model": "realesrgan-x4plus-anime",
+  "scale": 4,
+  "tile_size": 256,
+  "target_gpu": "NVIDIA GeForce GTX 1650 4GB",
+  "upscaled_assets": [
+    {
+      "category": "CG",
+      "filename": "CG_01_FirstMeeting.png",
+      "original_res": [
+        660,
+        295
+      ],
+      "upscaled_res": [
+        2640,
+        1180
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/CG/CG_01_FirstMeeting.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_02_PrivateTalk.png",
+      "original_res": [
+        660,
+        295
+      ],
+      "upscaled_res": [
+        2640,
+        1180
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/CG/CG_02_PrivateTalk.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_03_Relax.png",
+      "original_res": [
+        660,
+        280
+      ],
+      "upscaled_res": [
+        2640,
+        1120
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/CG/CG_03_Relax.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_04_Caring.png",
+      "original_res": [
+        660,
+        280
+      ],
+      "upscaled_res": [
+        2640,
+        1120
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/CG/CG_04_Caring.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_05_Romantic.png",
+      "original_res": [
+        440,
+        250
+      ],
+      "upscaled_res": [
+        1760,
+        1000
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/CG/CG_05_Romantic.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_06_RestTogether.png",
+      "original_res": [
+        440,
+        250
+      ],
+      "upscaled_res": [
+        1760,
+        1000
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/CG/CG_06_RestTogether.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_07_NightScene.png",
+      "original_res": [
+        430,
+        250
+      ],
+      "upscaled_res": [
+        1720,
+        1000
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/CG/CG_07_NightScene.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Angry.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Angry.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Blush.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Blush.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Concerned.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Concerned.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Confused.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Confused.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Excited.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Excited.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Happy.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Happy.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Hurt.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Hurt.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Normal.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Normal.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Sad.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Sad.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Satisfied.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Satisfied.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Seductive.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Seductive.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Shy.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Shy.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Smile.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Smile.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Surprised.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Surprised.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Teasing.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Teasing.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Thinking.png",
+      "original_res": [
+        115,
+        120
+      ],
+      "upscaled_res": [
+        460,
+        480
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Expressions/Portrait_Thinking.png"
+    },
+    {
+      "category": "Masters",
+      "filename": "Aurelia_FullBody_Master.png",
+      "original_res": [
+        420,
+        1024
+      ],
+      "upscaled_res": [
+        1680,
+        4096
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Masters/Aurelia_FullBody_Master.png"
+    },
+    {
+      "category": "Masters",
+      "filename": "Aurelia_HalfBody_Master.png",
+      "original_res": [
+        520,
+        725
+      ],
+      "upscaled_res": [
+        2080,
+        2900
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Masters/Aurelia_HalfBody_Master.png"
+    },
+    {
+      "category": "Masters",
+      "filename": "Aurelia_HalfBody_Reaching.png",
+      "original_res": [
+        550,
+        680
+      ],
+      "upscaled_res": [
+        2200,
+        2720
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/Masters/Aurelia_HalfBody_Reaching.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Body_Base.png",
+      "original_res": [
+        165,
+        320
+      ],
+      "upscaled_res": [
+        660,
+        1280
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/RigLayers/Layer_Body_Base.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Cape_Train.png",
+      "original_res": [
+        155,
+        200
+      ],
+      "upscaled_res": [
+        620,
+        800
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/RigLayers/Layer_Cape_Train.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Eyes_Mouth.png",
+      "original_res": [
+        85,
+        100
+      ],
+      "upscaled_res": [
+        340,
+        400
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/RigLayers/Layer_Eyes_Mouth.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Hair_Back.png",
+      "original_res": [
+        90,
+        235
+      ],
+      "upscaled_res": [
+        360,
+        940
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/RigLayers/Layer_Hair_Back.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Hair_Braid.png",
+      "original_res": [
+        75,
+        190
+      ],
+      "upscaled_res": [
+        300,
+        760
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/RigLayers/Layer_Hair_Braid.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Hair_Front.png",
+      "original_res": [
+        175,
+        280
+      ],
+      "upscaled_res": [
+        700,
+        1120
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/RigLayers/Layer_Hair_Front.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Ribbon_Lily.png",
+      "original_res": [
+        45,
+        145
+      ],
+      "upscaled_res": [
+        180,
+        580
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/RigLayers/Layer_Ribbon_Lily.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Skirt_Front.png",
+      "original_res": [
+        180,
+        135
+      ],
+      "upscaled_res": [
+        720,
+        540
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/RigLayers/Layer_Skirt_Front.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Sleeve_Ribbon.png",
+      "original_res": [
+        40,
+        125
+      ],
+      "upscaled_res": [
+        160,
+        500
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/RigLayers/Layer_Sleeve_Ribbon.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_00.png",
+      "original_res": [
+        160,
+        190
+      ],
+      "upscaled_res": [
+        640,
+        760
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/TalkFrames/Aurelia_Talk_00.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_01.png",
+      "original_res": [
+        160,
+        190
+      ],
+      "upscaled_res": [
+        640,
+        760
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/TalkFrames/Aurelia_Talk_01.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_02.png",
+      "original_res": [
+        160,
+        190
+      ],
+      "upscaled_res": [
+        640,
+        760
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/TalkFrames/Aurelia_Talk_02.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_03.png",
+      "original_res": [
+        160,
+        190
+      ],
+      "upscaled_res": [
+        640,
+        760
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/TalkFrames/Aurelia_Talk_03.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_04.png",
+      "original_res": [
+        160,
+        190
+      ],
+      "upscaled_res": [
+        640,
+        760
+      ],
+      "scale_factor": 4,
+      "model": "realesrgan-x4plus-anime",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Upscaled/TalkFrames/Aurelia_Talk_04.png"
+    }
+  ]
+}
