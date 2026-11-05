@@ -5,7 +5,13 @@ namespace Edenfall.Core
         Morning,
         Afternoon,
         Evening,
-        Night
+        Night,
+
+        // Aliases
+        Dawn = Morning,
+        Noon = Afternoon,
+        Dusk = Evening,
+        Midnight = Night
     }
 
     public static class TimeOfDayExtensions

@@ -13,6 +13,14 @@ namespace Edenfall.Characters
         Confident,
         Melancholic,
         Resolute,
-        Intimate
+        Intimate,
+
+        // Aliases
+        Neutral = Gentle,
+        Happy = Smiling,
+        Melancholy = Melancholic,
+        Blushing = Flustered,
+        Loving = Intimate,
+        Thoughtful = Pensive
     }
 }
