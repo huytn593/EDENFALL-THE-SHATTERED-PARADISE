@@ -1,0 +1,125 @@
+{
+  "pipeline_version": "3.6.2",
+  "character": "Aurelia",
+  "provenance": "Original User Reference Sheets",
+  "canonical_spec": {
+    "race": "Half-Elf (Bán tiên)",
+    "age": 24,
+    "hair": "Platinum-blonde with soft pink highlights",
+    "eyes": "Violet/purple",
+    "ornaments": "White lily hair ornament",
+    "ears": "Pointed elf ears",
+    "clothing": "Royal white, purple and gold gown with violet jewel choker",
+    "accessories": "Gold leg ring/thigh strap, gold bracelets, choker"
+  },
+  "sources": [
+    {
+      "filename": "Aurelia_ Edenfall Character Design Board.png",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia_ Edenfall Character Design Board.png",
+      "absolute_path": "C:/Users/Huy Pham/Downloads/EDENFALL-THE-SHATTERED-PARADISE/Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia_ Edenfall Character Design Board.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "file_size_bytes": 2556314,
+      "sha256": "1a69c9c26cb26a2d1b0ccfb3c814693892f126b7bbe5da2293fb53818448a21a"
+    },
+    {
+      "filename": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia_ Edenfall Heroine Design Sheet.png",
+      "absolute_path": "C:/Users/Huy Pham/Downloads/EDENFALL-THE-SHATTERED-PARADISE/Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia_ Edenfall Heroine Design Sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "color_mode": "RGBA",
+      "has_alpha": true,
+      "file_size_bytes": 2919263,
+      "sha256": "580966ebbc183d686fc99ffbbc50485ba6bfb2550f25b81bdbe23dd2c3f85ee3"
+    },
+    {
+      "filename": "Aurelia_ Embarrassed Expression Sheet-1.png",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia_ Embarrassed Expression Sheet-1.png",
+      "absolute_path": "C:/Users/Huy Pham/Downloads/EDENFALL-THE-SHATTERED-PARADISE/Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia_ Embarrassed Expression Sheet-1.png",
+      "width": 1672,
+      "height": 941,
+      "format": "PNG",
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "file_size_bytes": 2619364,
+      "sha256": "e9a6e5eaa86e9e3d9d8e19865b7323a501946c4c5d689b84da973fb56aabf665"
+    },
+    {
+      "filename": "Aurelia’s Edenfall Animation Sheet.png",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Edenfall Animation Sheet.png",
+      "absolute_path": "C:/Users/Huy Pham/Downloads/EDENFALL-THE-SHATTERED-PARADISE/Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Edenfall Animation Sheet.png",
+      "width": 1672,
+      "height": 941,
+      "format": "PNG",
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "file_size_bytes": 2567129,
+      "sha256": "eea9e79c994a009a6196d2ef199141ea32d95a9be6c9a910dbff8ef4f47cf25f"
+    },
+    {
+      "filename": "Aurelia’s Edenfall Expression Gallery.png",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Edenfall Expression Gallery.png",
+      "absolute_path": "C:/Users/Huy Pham/Downloads/EDENFALL-THE-SHATTERED-PARADISE/Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Edenfall Expression Gallery.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "file_size_bytes": 2732990,
+      "sha256": "b292b3c57220a465da9acf59155f65059149ca4f937bcea7f85de465705c62a2"
+    },
+    {
+      "filename": "Aurelia’s Edenfall Expression Sheet.png",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Edenfall Expression Sheet.png",
+      "absolute_path": "C:/Users/Huy Pham/Downloads/EDENFALL-THE-SHATTERED-PARADISE/Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Edenfall Expression Sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "file_size_bytes": 2707848,
+      "sha256": "e6b06dad38bf874785cc009330f410b2f3702483ceed16d23c245482fc9c9c9a"
+    },
+    {
+      "filename": "Aurelia’s Edenfall Talk Animation Sheet.png",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Edenfall Talk Animation Sheet.png",
+      "absolute_path": "C:/Users/Huy Pham/Downloads/EDENFALL-THE-SHATTERED-PARADISE/Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Edenfall Talk Animation Sheet.png",
+      "width": 1672,
+      "height": 941,
+      "format": "PNG",
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "file_size_bytes": 2614565,
+      "sha256": "832a8541621d4e649232eb050ece84dfe5f4f64d8ae28e2b54d344001663b64b"
+    },
+    {
+      "filename": "Aurelia’s Purple-Gold CG Showcase.png",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Purple-Gold CG Showcase.png",
+      "absolute_path": "C:/Users/Huy Pham/Downloads/EDENFALL-THE-SHATTERED-PARADISE/Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Purple-Gold CG Showcase.png",
+      "width": 1672,
+      "height": 941,
+      "format": "PNG",
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "file_size_bytes": 2689414,
+      "sha256": "2fb4ad018e071a5527523a6f4317756369e021681901f157833f77d3397181aa"
+    },
+    {
+      "filename": "Aurelia’s Shy Expression Board-2.png",
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Shy Expression Board-2.png",
+      "absolute_path": "C:/Users/Huy Pham/Downloads/EDENFALL-THE-SHATTERED-PARADISE/Assets/_Edenfall/Art/Characters/Aurelia/Sources/Aurelia’s Shy Expression Board-2.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "file_size_bytes": 2661431,
+      "sha256": "f8f0d7a03f232587c183fd52388044cd47b828dc218bdd46e73ad4392370a533"
+    }
+  ]
+}

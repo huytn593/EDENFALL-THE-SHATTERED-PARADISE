@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd75c5084437148469cb65eb6ce0a716, type: 3}
+  m_Name: DialogueTree_Aurelia
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.Dialogue.DialogueTree
+  treeId: tree_aurelia_main
+  characterId: aurelia
+  initialNodeId: aur_welcome
+  nodes:
+  - nodeId: aur_welcome
+    speakerName: Aurelia
+    emotion: 0
+    textVi: "Ch\xE0o m\u1EEBng ng\u01B0\u01A1i \u0111\xE3 t\u1EC9nh gi\u1EA5c t\u1EA1i
+      Th\xE1nh \u0110\u1ECBa B\xECnh Minh, l\u1EEF kh\xE1ch. Ta l\xE0 Aurelia. R\u1EA5t
+      hi\u1EBFm ai c\xF3 th\u1EC3 v\u01B0\u1EE3t qua d\xF2ng ch\u1EA3y h\u01B0 kh\xF4ng
+      m\xE0 v\u1EABn gi\u1EEF tr\u1ECDn v\u1EB9n th\u1EA7n tr\xED. Ng\u01B0\u01A1i
+      c\xF3 b\u1ECB th\u01B0\u01A1ng \u1EDF \u0111\xE2u kh\xF4ng?"
+    textEn: Welcome to Dawn Sanctuary, outsider. My name is Aurelia. Few awaken with
+      their senses intact after crossing the celestial void. Are you hurt?
+    choices:
+    - choiceId: c1
+      textVi: "Ta ch\u1EC9 nh\u1EDB \u0111\u01B0\u1EE3c \xE1nh sao v\xE0 m\u1ED9t
+        giai \u0111i\u1EC7u d\u1ECBu d\xE0ng... r\u1ED3i sau \u0111\xF3 nghe th\u1EA5y
+        gi\u1ECDng n\xF3i c\u1EE7a n\xE0ng."
+      textEn: I remember only starlight and a melody... and then your voice.
+      tone: 2
+      reqAffection: 0
+      reqTrust: 0
+      reqItemId: 
+      affectionDelta: 6
+      trustDelta: 5
+      familiarityDelta: 2
+      respectDelta: 0
+      comfortDelta: 0
+      conflictDelta: 0
+      memoryTextVi: "B\u1ED9c l\u1ED9 s\u1EF1 ch\xE2n th\xE0nh v\xE0 y\u1EBFu m\u1EC1m
+        ngay khi v\u1EEBa t\u1EC9nh gi\u1EA5c c\xF9ng Aurelia."
+      memoryTextEn: Spoke with genuine vulnerability upon first waking with Aurelia.
+      triggerCinematicId: 
+      triggerQuestId: 
+      triggerQuestStep: -1
+      nextNodeId: aur_reassure
+    - choiceId: c2
+      textVi: "N\xE0ng l\xE0 ai m\xE0 d\xE1m ch\u1EA5t v\u1EA5n m\u1ED9t Echo? H\xE3y
+        gi\u1EA3i th\xEDch cho ta bi\u1EBFt \u0111i\u1EC1u g\xEC \u0111\xE3 x\xE9
+        to\u1EA1c v\xF9ng \u0111\u1EA5t n\xE0y."
+      textEn: Who are you to question an Echo? Tell me what shattered this realm.
+      tone: 3
+      reqAffection: 0
+      reqTrust: 0
+      reqItemId: 
+      affectionDelta: 0
+      trustDelta: 0
+      familiarityDelta: 2
+      respectDelta: 3
+      comfortDelta: 0
+      conflictDelta: 4
+      memoryTextVi: "Th\u1EC3 hi\u1EC7n kh\xED ch\u1EA5t ki\xEAu h\xE3nh v\xE0 b\u1EA5t
+        khu\u1EA5t tr\u01B0\u1EDBc Aurelia."
+      memoryTextEn: Exhibited fiery pride and independence before Aurelia.
+      triggerCinematicId: 
+      triggerQuestId: 
+      triggerQuestStep: -1
+      nextNodeId: aur_defiant
+    - choiceId: c3
+      textVi: "Ta mu\u1ED1n t\xECm hi\u1EC3u v\u1EC1 Th\xE1nh \u0110\u1ECBa n\xE0y
+        v\xE0 C\xE1nh C\u1ED5ng Nh\u1EADt Th\u1EF1c \u1EDF ph\xEDa nam."
+      textEn: I need to understand this sanctuary and the Eclipse Gate to the south.
+      tone: 1
+      reqAffection: 0
+      reqTrust: 0
+      reqItemId: 
+      affectionDelta: 0
+      trustDelta: 4
+      familiarityDelta: 2
+      respectDelta: 4
+      comfortDelta: 0
+      conflictDelta: 0
+      memoryTextVi: 
+      memoryTextEn: 
+      triggerCinematicId: 
+      triggerQuestId: 
+      triggerQuestStep: -1
+      nextNodeId: aur_explain
+  - nodeId: aur_intimate
+    speakerName: Aurelia
+    emotion: 3
+    textVi: "M\u1ED7i khi ng\u01B0\u01A1i nh\xECn ta b\u1EB1ng \xE1nh m\u1EAFt \u1EA5y,
+      Echo... ta l\u1EA1i c\u1EA3m th\u1EA5y Thi\xEAn \u0110\u01B0\u1EDDng V\u1EE1
+      V\u1EE5n n\xE0y kh\xF4ng h\u1EC1 m\u1EA5t \u0111i, m\xE0 \u0111ang ch\u1EDD
+      ch\xFAng ta c\xF9ng nhau t\xE1i thi\u1EBFt. Tim ta \u0111\u1EADp r\u1ED9n r\xE0ng
+      m\u1ED7i khi ng\u01B0\u01A1i b\u01B0\u1EDBc v\xE0o V\u01B0\u1EDDn B\xECnh Minh."
+    textEn: Whenever you look at me like that, Echo... I feel this Shattered Paradise
+      is waiting for us to rebuild together. My heart races whenever you enter Dawn
+      Garden.
+    choices:
+    - choiceId: c_romance
+      textVi: "V\u1EADy h\xE3y c\xF9ng ta t\xE1i sinh l\u1EA1i Edenfall, Aurelia.
+        \u0110\u1EBFn g\u1EA7n ta h\u01A1n n\u1EEFa \u0111i."
+      textEn: Then let us rebuild Edenfall together, Aurelia. Come closer.
+      tone: 0
+      reqAffection: 0
+      reqTrust: 0
+      reqItemId: 
+      affectionDelta: 8
+      trustDelta: 0
+      familiarityDelta: 2
+      respectDelta: 0
+      comfortDelta: 10
+      conflictDelta: 0
+      memoryTextVi: "Trao nhau l\u1EDDi th\u1EC1 \u01B0\u1EDBc ng\u1ECDt ng\xE0o
+        d\u01B0\u1EDBi v\xF2m hoa tinh t\xFA."
+      memoryTextEn: Shared a sweet, tender vow beneath the starlight blossoms.
+      triggerCinematicId: cg_aurelia_garden
+      triggerQuestId: 
+      triggerQuestStep: -1
+      nextNodeId: 
+    - choiceId: c_flirt
+      textVi: "N\xE0ng c\xF2n r\u1EF1c r\u1EE1 v\xE0 cu\u1ED1n h\xFAt h\u01A1n c\u1EA3
+        tri\u1EC7u v\xEC sao tr\xEAn v\xF2m tr\u1EDDi kia."
+      textEn: You are far more captivating than the millions of stars above.
+      tone: 5
+      reqAffection: 0
+      reqTrust: 0
+      reqItemId: 
+      affectionDelta: 7
+      trustDelta: 0
+      familiarityDelta: 2
+      respectDelta: 0
+      comfortDelta: 5
+      conflictDelta: 0
+      memoryTextVi: 
+      memoryTextEn: 
+      triggerCinematicId: 
+      triggerQuestId: 
+      triggerQuestStep: -1
+      nextNodeId: 
+  - nodeId: aur_reassure
+    speakerName: Aurelia
+    emotion: 1
+    textVi: "Ng\u01B0\u01A1i th\u1EADt c\xF3 t\xE0i \u0103n n\xF3i... Gi\u1ECDng
+      \u0111i\u1EC7u c\u1EE7a ng\u01B0\u01A1i nh\u01B0 \xE1nh n\u1EAFng s\u01B0\u1EDFi
+      \u1EA5m nh\u1EEFng t\u1EA3ng b\u0103ng ngh\xECn n\u0103m trong th\xE1nh \u0111i\u1EC7n.
+      H\xE3y nh\u1EADn \u0111\xF3a Hoa Ly B\xECnh Minh n\xE0y, n\xF3 s\u1EBD b\u1EA3o
+      h\u1ED9 cho linh h\u1ED3n ng\u01B0\u01A1i."
+    textEn: You have a gentle way with words... Your tone warms the ancient ice in
+      this sanctuary. Take this Dawn Lily, it will protect your spirit.
+    choices: []
+  - nodeId: aur_defiant
+    speakerName: Aurelia
+    emotion: 4
+    textVi: "Kh\xED kh\xE1i \u0111\xE1ng khen, nh\u01B0ng l\xF2ng ki\xEAu h\xE3nh
+      m\xF9 qu\xE1ng s\u1EBD ch\u1EC9 d\u1EABn ng\u01B0\u01A1i v\xE0o nanh vu\u1ED1t
+      c\u1EE7a H\u1EAFc Kh\xED V\u1EF1c Th\u1EB3m. N\u1EBFu ng\u01B0\u01A1i mu\u1ED1n
+      s\u1ED1ng s\xF3t, h\xE3y h\u1ECDc c\xE1ch tin t\u01B0\u1EDFng \u0111\u1ED3ng
+      minh."
+    textEn: A fierce spirit, but blind pride will only lead you into the jaws of
+      the Miasma. If you wish to survive, learn to trust allies.
+    choices: []
+  - nodeId: aur_explain
+    speakerName: Aurelia
+    emotion: 6
+    textVi: "N\u01A1i n\xE0y l\xE0 t\xE0n t\xEDch cu\u1ED1i c\xF9ng c\u1EE7a V\u1EA7ng
+      Th\xE1i D\u01B0\u01A1ng. C\xE1nh C\u1ED5ng Nh\u1EADt Th\u1EF1c ph\xEDa nam
+      \u0111ang r\u1EA1n n\u1EE9t t\u1EEBng ng\xE0y. N\u1EBFu ch\xFAng ta kh\xF4ng
+      k\xEDch ho\u1EA1t l\u1EA1i L\xF5i Tinh T\xFA t\u1EA1i T\xF2a Th\xE1p V\u1EE1
+      V\u1EE5n, b\xF3ng t\u1ED1i s\u1EBD nu\u1ED1t ch\u1EEDng t\u1EA5t c\u1EA3."
+    textEn: This place is the last remnant of the Solstice Sun. The Eclipse Gate
+      fractures daily. If we do not attune the Astral Core, darkness will consume
+      all.
+    choices: []

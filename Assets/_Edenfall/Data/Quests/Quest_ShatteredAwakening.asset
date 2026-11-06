@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1163d07f1026e4995aa951efbfbef6, type: 3}
+  m_Name: Quest_ShatteredAwakening
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.Quests.QuestDefinition
+  questId: quest_spire
+  titleVi: "\u0110\xE1nh Th\u1EE9c V\xF9ng \u0110\u1EA5t V\u1EE1 V\u1EE5n"
+  titleEn: The Shattered Awakening
+  category: 0
+  summaryVi: "T\xF2a Th\xE1p V\u1EE1 V\u1EE5n ph\xE1t ra t\u1EA7n s\u1ED1 c\u1ED9ng
+    h\u01B0\u1EDFng tr\u1EA7m th\u1EA5p. H\xE3y \u0111\u1EBFn t\xE2m \u0111i\u1EC3m
+    di t\xEDch v\xE0 h\xF2a nh\u1ECBp L\xF5i Tinh T\xFA."
+  summaryEn: Dawn Sanctuary's central spire emits a low harmonic frequency. Journey
+    to the heart and attune the Astral Core.
+  steps:
+  - descriptionVi: "Ti\u1EBFn \u0111\u1EBFn T\xF2a Th\xE1p V\u1EE1 V\u1EE5n t\u1EA1i
+      trung t\xE2m Th\xE1nh \u0110\u1ECBa"
+    descriptionEn: Approach the Shattered Spire at sanctuary center
+    targetLocationId: loc_spire
+    isCompleted: 0
+  - descriptionVi: "D\u1EABn truy\u1EC1n n\u0103ng l\u01B0\u1EE3ng c\u1ED9ng h\u01B0\u1EDFng
+      v\xE0o L\xF5i Tinh T\xFA"
+    descriptionEn: Channel Luminary Resonance into the Astral Core
+    targetLocationId: loc_spire
+    isCompleted: 0
+  rewardTextVi: "C\u1ED9ng H\u01B0\u1EDFng Tinh T\xFA +15, M\u1EA3nh \u0110\u1ECBa
+    M\u1EA1ch x2"
+  rewardTextEn: Resonance +15, Leyline Shard x2
+  rewardResonance: 15

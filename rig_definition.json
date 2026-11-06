@@ -1,0 +1,320 @@
+{
+  "character": "Aurelia",
+  "canvas_size": {
+    "width": 2080,
+    "height": 2900
+  },
+  "pixels_per_unit": 100.0,
+  "root_pivot": {
+    "x": 0.5,
+    "y": 0.0
+  },
+  "bone_hierarchy": {
+    "Bone_Root": {
+      "pos": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null
+    },
+    "Bone_Pelvis": {
+      "pos": [
+        0.0,
+        0.4,
+        0.0
+      ],
+      "parent": "Bone_Root"
+    },
+    "Bone_Torso": {
+      "pos": [
+        0.0,
+        1.1,
+        0.0
+      ],
+      "parent": "Bone_Pelvis"
+    },
+    "Bone_Chest": {
+      "pos": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "parent": "Bone_Torso"
+    },
+    "Bone_Neck": {
+      "pos": [
+        0.0,
+        1.9,
+        0.0
+      ],
+      "parent": "Bone_Chest"
+    },
+    "Bone_Head": {
+      "pos": [
+        0.0,
+        2.2,
+        0.0
+      ],
+      "parent": "Bone_Neck"
+    },
+    "Bone_EyeL": {
+      "pos": [
+        -0.22,
+        0.05,
+        0.0
+      ],
+      "parent": "Bone_Head"
+    },
+    "Bone_IrisL": {
+      "pos": [
+        -0.22,
+        0.05,
+        0.0
+      ],
+      "parent": "Bone_EyeL"
+    },
+    "Bone_EyeR": {
+      "pos": [
+        0.15,
+        0.18,
+        0.0
+      ],
+      "parent": "Bone_Head"
+    },
+    "Bone_IrisR": {
+      "pos": [
+        0.15,
+        0.18,
+        0.0
+      ],
+      "parent": "Bone_EyeR"
+    },
+    "Bone_Mouth": {
+      "pos": [
+        0.08,
+        -0.22,
+        0.0
+      ],
+      "parent": "Bone_Head"
+    },
+    "Bone_HairFront": {
+      "pos": [
+        0.0,
+        0.25,
+        0.0
+      ],
+      "parent": "Bone_Head"
+    },
+    "Bone_HairSideL": {
+      "pos": [
+        -0.35,
+        -0.15,
+        0.0
+      ],
+      "parent": "Bone_Head"
+    },
+    "Bone_HairSideR": {
+      "pos": [
+        0.38,
+        -0.12,
+        0.0
+      ],
+      "parent": "Bone_Head"
+    },
+    "Bone_HairBack": {
+      "pos": [
+        0.0,
+        -0.1,
+        0.0
+      ],
+      "parent": "Bone_Torso"
+    },
+    "Bone_LilyOrnament": {
+      "pos": [
+        -0.32,
+        0.35,
+        0.0
+      ],
+      "parent": "Bone_Head"
+    },
+    "Bone_ArmR": {
+      "pos": [
+        0.18,
+        0.05,
+        0.0
+      ],
+      "parent": "Bone_Chest"
+    }
+  },
+  "layers": {
+    "Layer_00_Hair_Back": {
+      "filename": "Layer_00_Hair_Back.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 5,
+      "z_depth": 0.2,
+      "parent_bone": "Bone_HairBack"
+    },
+    "Layer_01_Body_Torso": {
+      "filename": "Layer_01_Body_Torso.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 10,
+      "z_depth": 0.1,
+      "parent_bone": "Bone_Torso"
+    },
+    "Layer_02_Head_FaceBase": {
+      "filename": "Layer_02_Head_FaceBase.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 20,
+      "z_depth": 0.0,
+      "parent_bone": "Bone_Head"
+    },
+    "Layer_03_EyeL_Open": {
+      "filename": "Layer_03_EyeL_Open.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 25,
+      "z_depth": -0.02,
+      "parent_bone": "Bone_EyeL"
+    },
+    "Layer_03_EyeL_Blink": {
+      "filename": "Layer_03_EyeL_Blink.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 25,
+      "z_depth": -0.02,
+      "parent_bone": "Bone_EyeL"
+    },
+    "Layer_03_IrisL": {
+      "filename": "Layer_03_IrisL.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 26,
+      "z_depth": -0.025,
+      "parent_bone": "Bone_IrisL"
+    },
+    "Layer_04_EyeR_Open": {
+      "filename": "Layer_04_EyeR_Open.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 25,
+      "z_depth": -0.02,
+      "parent_bone": "Bone_EyeR"
+    },
+    "Layer_04_EyeR_Blink": {
+      "filename": "Layer_04_EyeR_Blink.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 25,
+      "z_depth": -0.02,
+      "parent_bone": "Bone_EyeR"
+    },
+    "Layer_04_IrisR": {
+      "filename": "Layer_04_IrisR.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 26,
+      "z_depth": -0.025,
+      "parent_bone": "Bone_IrisR"
+    },
+    "Layer_05_Eyebrows": {
+      "filename": "Layer_05_Eyebrows.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 28,
+      "z_depth": -0.03,
+      "parent_bone": "Bone_Head"
+    },
+    "Layer_06_Mouth_Open": {
+      "filename": "Layer_06_Mouth_Open.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 30,
+      "z_depth": -0.035,
+      "parent_bone": "Bone_Mouth"
+    },
+    "Layer_06_Mouth_Closed": {
+      "filename": "Layer_06_Mouth_Closed.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 30,
+      "z_depth": -0.035,
+      "parent_bone": "Bone_Mouth"
+    },
+    "Layer_06_Mouth_HalfOpen": {
+      "filename": "Layer_06_Mouth_HalfOpen.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 30,
+      "z_depth": -0.035,
+      "parent_bone": "Bone_Mouth"
+    },
+    "Layer_06_Mouth_Wide": {
+      "filename": "Layer_06_Mouth_Wide.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 30,
+      "z_depth": -0.035,
+      "parent_bone": "Bone_Mouth"
+    },
+    "Layer_06_Mouth_Smile": {
+      "filename": "Layer_06_Mouth_Smile.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 30,
+      "z_depth": -0.035,
+      "parent_bone": "Bone_Mouth"
+    },
+    "Layer_07_Hair_SideL": {
+      "filename": "Layer_07_Hair_SideL.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 35,
+      "z_depth": -0.045,
+      "parent_bone": "Bone_HairSideL"
+    },
+    "Layer_07_Hair_SideR": {
+      "filename": "Layer_07_Hair_SideR.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 35,
+      "z_depth": -0.045,
+      "parent_bone": "Bone_HairSideR"
+    },
+    "Layer_08_Hair_Front_Bangs": {
+      "filename": "Layer_08_Hair_Front_Bangs.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 40,
+      "z_depth": -0.07,
+      "parent_bone": "Bone_HairFront"
+    },
+    "Layer_09_Accessory_Lily_Ribbon": {
+      "filename": "Layer_09_Accessory_Lily_Ribbon.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 45,
+      "z_depth": -0.085,
+      "parent_bone": "Bone_LilyOrnament"
+    },
+    "Layer_10_Body_Breathing_Chest": {
+      "filename": "Layer_10_Body_Breathing_Chest.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 15,
+      "z_depth": 0.05,
+      "parent_bone": "Bone_Chest"
+    },
+    "Layer_11_Arm_Right": {
+      "filename": "Layer_11_Arm_Right.png",
+      "width": 2080,
+      "height": 2900,
+      "order_in_layer": 38,
+      "z_depth": -0.06,
+      "parent_bone": "Bone_ArmR"
+    }
+  }
+}

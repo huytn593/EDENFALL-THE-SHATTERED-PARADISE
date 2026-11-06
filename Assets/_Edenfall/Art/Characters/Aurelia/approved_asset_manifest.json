@@ -1,0 +1,487 @@
+{
+  "pipeline_version": "3.6.2",
+  "qa_date": "2026-11-05",
+  "evaluator": "Antigravity Visual QA Director",
+  "approved_assets": [
+    {
+      "category": "CG",
+      "filename": "CG_01_FirstMeeting.png",
+      "resolution": [
+        2640,
+        1180
+      ],
+      "mode": "RGB",
+      "sharpness": 341.86,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/CG/CG_01_FirstMeeting.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_02_PrivateTalk.png",
+      "resolution": [
+        2640,
+        1180
+      ],
+      "mode": "RGB",
+      "sharpness": 460.77,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/CG/CG_02_PrivateTalk.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_03_Relax.png",
+      "resolution": [
+        2640,
+        1120
+      ],
+      "mode": "RGB",
+      "sharpness": 554.1,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/CG/CG_03_Relax.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_04_Caring.png",
+      "resolution": [
+        2640,
+        1120
+      ],
+      "mode": "RGB",
+      "sharpness": 393.73,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/CG/CG_04_Caring.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_05_Romantic.png",
+      "resolution": [
+        1760,
+        1000
+      ],
+      "mode": "RGB",
+      "sharpness": 645.65,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/CG/CG_05_Romantic.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_06_RestTogether.png",
+      "resolution": [
+        1760,
+        1000
+      ],
+      "mode": "RGB",
+      "sharpness": 658.34,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/CG/CG_06_RestTogether.png"
+    },
+    {
+      "category": "CG",
+      "filename": "CG_07_NightScene.png",
+      "resolution": [
+        1720,
+        1000
+      ],
+      "mode": "RGB",
+      "sharpness": 488.62,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/CG/CG_07_NightScene.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Angry.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1368.99,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Angry.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Blush.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1305.36,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Blush.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Concerned.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1594.98,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Concerned.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Confused.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1694.19,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Confused.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Excited.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1660.33,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Excited.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Happy.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1569.7,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Happy.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Hurt.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1369.28,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Hurt.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Normal.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1520.5,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Normal.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Sad.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1453.74,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Sad.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Satisfied.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1372.38,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Satisfied.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Seductive.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1510.43,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Seductive.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Shy.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1373.67,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Shy.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Smile.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1552.55,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Smile.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Surprised.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1561.23,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Surprised.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Teasing.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1354.09,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Teasing.png"
+    },
+    {
+      "category": "Expressions",
+      "filename": "Portrait_Thinking.png",
+      "resolution": [
+        460,
+        480
+      ],
+      "mode": "RGB",
+      "sharpness": 1568.58,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Expressions/Portrait_Thinking.png"
+    },
+    {
+      "category": "Masters",
+      "filename": "Aurelia_FullBody_Master.png",
+      "resolution": [
+        1680,
+        4096
+      ],
+      "mode": "RGBA",
+      "sharpness": 483.38,
+      "alpha_score": 88.95,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Masters/Aurelia_FullBody_Master.png"
+    },
+    {
+      "category": "Masters",
+      "filename": "Aurelia_HalfBody_Master.png",
+      "resolution": [
+        2080,
+        2900
+      ],
+      "mode": "RGBA",
+      "sharpness": 492.95,
+      "alpha_score": 87.07,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Masters/Aurelia_HalfBody_Master.png"
+    },
+    {
+      "category": "Masters",
+      "filename": "Aurelia_HalfBody_Reaching.png",
+      "resolution": [
+        2200,
+        2720
+      ],
+      "mode": "RGBA",
+      "sharpness": 453.17,
+      "alpha_score": 92.97,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/Masters/Aurelia_HalfBody_Reaching.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Body_Base.png",
+      "resolution": [
+        660,
+        1280
+      ],
+      "mode": "RGBA",
+      "sharpness": 849.82,
+      "alpha_score": 71.75,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/RigLayers/Layer_Body_Base.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Cape_Train.png",
+      "resolution": [
+        620,
+        800
+      ],
+      "mode": "RGBA",
+      "sharpness": 676.81,
+      "alpha_score": 70.77,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/RigLayers/Layer_Cape_Train.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Eyes_Mouth.png",
+      "resolution": [
+        340,
+        400
+      ],
+      "mode": "RGBA",
+      "sharpness": 805.74,
+      "alpha_score": 80.54,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/RigLayers/Layer_Eyes_Mouth.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Hair_Back.png",
+      "resolution": [
+        360,
+        940
+      ],
+      "mode": "RGBA",
+      "sharpness": 714.56,
+      "alpha_score": 47.23,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/RigLayers/Layer_Hair_Back.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Hair_Braid.png",
+      "resolution": [
+        300,
+        760
+      ],
+      "mode": "RGBA",
+      "sharpness": 1027.85,
+      "alpha_score": 55.57,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/RigLayers/Layer_Hair_Braid.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Hair_Front.png",
+      "resolution": [
+        700,
+        1120
+      ],
+      "mode": "RGBA",
+      "sharpness": 952.05,
+      "alpha_score": 45.55,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/RigLayers/Layer_Hair_Front.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Ribbon_Lily.png",
+      "resolution": [
+        180,
+        580
+      ],
+      "mode": "RGBA",
+      "sharpness": 811.01,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/RigLayers/Layer_Ribbon_Lily.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Skirt_Front.png",
+      "resolution": [
+        720,
+        540
+      ],
+      "mode": "RGBA",
+      "sharpness": 694.06,
+      "alpha_score": 91.83,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/RigLayers/Layer_Skirt_Front.png"
+    },
+    {
+      "category": "RigLayers",
+      "filename": "Layer_Sleeve_Ribbon.png",
+      "resolution": [
+        160,
+        500
+      ],
+      "mode": "RGBA",
+      "sharpness": 737.44,
+      "alpha_score": 68.48,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/RigLayers/Layer_Sleeve_Ribbon.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_00.png",
+      "resolution": [
+        640,
+        760
+      ],
+      "mode": "RGB",
+      "sharpness": 1376.02,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/TalkFrames/Aurelia_Talk_00.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_01.png",
+      "resolution": [
+        640,
+        760
+      ],
+      "mode": "RGB",
+      "sharpness": 1402.39,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/TalkFrames/Aurelia_Talk_01.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_02.png",
+      "resolution": [
+        640,
+        760
+      ],
+      "mode": "RGB",
+      "sharpness": 1427.55,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/TalkFrames/Aurelia_Talk_02.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_03.png",
+      "resolution": [
+        640,
+        760
+      ],
+      "mode": "RGB",
+      "sharpness": 1434.7,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/TalkFrames/Aurelia_Talk_03.png"
+    },
+    {
+      "category": "TalkFrames",
+      "filename": "Aurelia_Talk_04.png",
+      "resolution": [
+        640,
+        760
+      ],
+      "mode": "RGB",
+      "sharpness": 1358.28,
+      "alpha_score": 100.0,
+      "path": "Assets/_Edenfall/Art/Characters/Aurelia/Approved/TalkFrames/Aurelia_Talk_04.png"
+    }
+  ]
+}

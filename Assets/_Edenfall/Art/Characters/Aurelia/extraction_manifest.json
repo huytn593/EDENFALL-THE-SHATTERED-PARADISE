@@ -1,0 +1,605 @@
+{
+  "pipeline_version": "3.6.2",
+  "extracted_assets": [
+    {
+      "category": "Masters",
+      "name": "Aurelia_HalfBody_Master",
+      "filename": "Aurelia_HalfBody_Master.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        0,
+        0,
+        520,
+        725
+      ],
+      "width": 520,
+      "height": 725,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Masters/Aurelia_HalfBody_Master.png"
+    },
+    {
+      "category": "Masters",
+      "name": "Aurelia_HalfBody_Reaching",
+      "filename": "Aurelia_HalfBody_Reaching.png",
+      "source_sheet": "Aurelia’s Edenfall Talk Animation Sheet.png",
+      "crop_coords_xyxy": [
+        0,
+        0,
+        550,
+        680
+      ],
+      "width": 550,
+      "height": 680,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Masters/Aurelia_HalfBody_Reaching.png"
+    },
+    {
+      "category": "Masters",
+      "name": "Aurelia_FullBody_Master",
+      "filename": "Aurelia_FullBody_Master.png",
+      "source_sheet": "Aurelia_ Edenfall Character Design Board.png",
+      "crop_coords_xyxy": [
+        0,
+        0,
+        420,
+        1024
+      ],
+      "width": 420,
+      "height": 1024,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Masters/Aurelia_FullBody_Master.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Normal",
+      "filename": "Portrait_Normal.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        525,
+        355,
+        640,
+        475
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Normal.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Smile",
+      "filename": "Portrait_Smile.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        648,
+        355,
+        763,
+        475
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Smile.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Happy",
+      "filename": "Portrait_Happy.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        771,
+        355,
+        886,
+        475
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Happy.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Excited",
+      "filename": "Portrait_Excited.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        894,
+        355,
+        1009,
+        475
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Excited.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Surprised",
+      "filename": "Portrait_Surprised.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1017,
+        355,
+        1132,
+        475
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Surprised.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Confused",
+      "filename": "Portrait_Confused.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1140,
+        355,
+        1255,
+        475
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Confused.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Thinking",
+      "filename": "Portrait_Thinking.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1263,
+        355,
+        1378,
+        475
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Thinking.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Concerned",
+      "filename": "Portrait_Concerned.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1386,
+        355,
+        1501,
+        475
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Concerned.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Shy",
+      "filename": "Portrait_Shy.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        525,
+        525,
+        640,
+        645
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Shy.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Blush",
+      "filename": "Portrait_Blush.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        648,
+        525,
+        763,
+        645
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Blush.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Teasing",
+      "filename": "Portrait_Teasing.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        771,
+        525,
+        886,
+        645
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Teasing.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Seductive",
+      "filename": "Portrait_Seductive.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        894,
+        525,
+        1009,
+        645
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Seductive.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Sad",
+      "filename": "Portrait_Sad.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1017,
+        525,
+        1132,
+        645
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Sad.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Angry",
+      "filename": "Portrait_Angry.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1140,
+        525,
+        1255,
+        645
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Angry.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Hurt",
+      "filename": "Portrait_Hurt.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1263,
+        525,
+        1378,
+        645
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Hurt.png"
+    },
+    {
+      "category": "Expressions",
+      "name": "Portrait_Satisfied",
+      "filename": "Portrait_Satisfied.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1386,
+        525,
+        1501,
+        645
+      ],
+      "width": 115,
+      "height": 120,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/Expressions/Portrait_Satisfied.png"
+    },
+    {
+      "category": "TalkFrames",
+      "name": "Aurelia_Talk_00",
+      "filename": "Aurelia_Talk_00.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        645,
+        50,
+        805,
+        240
+      ],
+      "width": 160,
+      "height": 190,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/TalkFrames/Aurelia_Talk_00.png"
+    },
+    {
+      "category": "TalkFrames",
+      "name": "Aurelia_Talk_01",
+      "filename": "Aurelia_Talk_01.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        820,
+        50,
+        980,
+        240
+      ],
+      "width": 160,
+      "height": 190,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/TalkFrames/Aurelia_Talk_01.png"
+    },
+    {
+      "category": "TalkFrames",
+      "name": "Aurelia_Talk_02",
+      "filename": "Aurelia_Talk_02.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        995,
+        50,
+        1155,
+        240
+      ],
+      "width": 160,
+      "height": 190,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/TalkFrames/Aurelia_Talk_02.png"
+    },
+    {
+      "category": "TalkFrames",
+      "name": "Aurelia_Talk_03",
+      "filename": "Aurelia_Talk_03.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1170,
+        50,
+        1330,
+        240
+      ],
+      "width": 160,
+      "height": 190,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/TalkFrames/Aurelia_Talk_03.png"
+    },
+    {
+      "category": "TalkFrames",
+      "name": "Aurelia_Talk_04",
+      "filename": "Aurelia_Talk_04.png",
+      "source_sheet": "Aurelia’s Edenfall Expression Sheet.png",
+      "crop_coords_xyxy": [
+        1345,
+        50,
+        1505,
+        240
+      ],
+      "width": 160,
+      "height": 190,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/TalkFrames/Aurelia_Talk_04.png"
+    },
+    {
+      "category": "CG",
+      "name": "CG_01_FirstMeeting",
+      "filename": "CG_01_FirstMeeting.png",
+      "source_sheet": "Aurelia’s Purple-Gold CG Showcase.png",
+      "crop_coords_xyxy": [
+        325,
+        10,
+        985,
+        305
+      ],
+      "width": 660,
+      "height": 295,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/CG/CG_01_FirstMeeting.png"
+    },
+    {
+      "category": "CG",
+      "name": "CG_02_PrivateTalk",
+      "filename": "CG_02_PrivateTalk.png",
+      "source_sheet": "Aurelia’s Purple-Gold CG Showcase.png",
+      "crop_coords_xyxy": [
+        1005,
+        10,
+        1665,
+        305
+      ],
+      "width": 660,
+      "height": 295,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/CG/CG_02_PrivateTalk.png"
+    },
+    {
+      "category": "CG",
+      "name": "CG_03_Relax",
+      "filename": "CG_03_Relax.png",
+      "source_sheet": "Aurelia’s Purple-Gold CG Showcase.png",
+      "crop_coords_xyxy": [
+        325,
+        355,
+        985,
+        635
+      ],
+      "width": 660,
+      "height": 280,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/CG/CG_03_Relax.png"
+    },
+    {
+      "category": "CG",
+      "name": "CG_04_Caring",
+      "filename": "CG_04_Caring.png",
+      "source_sheet": "Aurelia’s Purple-Gold CG Showcase.png",
+      "crop_coords_xyxy": [
+        1005,
+        355,
+        1665,
+        635
+      ],
+      "width": 660,
+      "height": 280,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/CG/CG_04_Caring.png"
+    },
+    {
+      "category": "CG",
+      "name": "CG_05_Romantic",
+      "filename": "CG_05_Romantic.png",
+      "source_sheet": "Aurelia’s Purple-Gold CG Showcase.png",
+      "crop_coords_xyxy": [
+        325,
+        685,
+        765,
+        935
+      ],
+      "width": 440,
+      "height": 250,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/CG/CG_05_Romantic.png"
+    },
+    {
+      "category": "CG",
+      "name": "CG_06_RestTogether",
+      "filename": "CG_06_RestTogether.png",
+      "source_sheet": "Aurelia’s Purple-Gold CG Showcase.png",
+      "crop_coords_xyxy": [
+        780,
+        685,
+        1220,
+        935
+      ],
+      "width": 440,
+      "height": 250,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/CG/CG_06_RestTogether.png"
+    },
+    {
+      "category": "CG",
+      "name": "CG_07_NightScene",
+      "filename": "CG_07_NightScene.png",
+      "source_sheet": "Aurelia’s Purple-Gold CG Showcase.png",
+      "crop_coords_xyxy": [
+        1235,
+        685,
+        1665,
+        935
+      ],
+      "width": 430,
+      "height": 250,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/CG/CG_07_NightScene.png"
+    },
+    {
+      "category": "RigLayers",
+      "name": "Layer_Body_Base",
+      "filename": "Layer_Body_Base.png",
+      "source_sheet": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "crop_coords_xyxy": [
+        975,
+        690,
+        1140,
+        1010
+      ],
+      "width": 165,
+      "height": 320,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/RigLayers/Layer_Body_Base.png"
+    },
+    {
+      "category": "RigLayers",
+      "name": "Layer_Eyes_Mouth",
+      "filename": "Layer_Eyes_Mouth.png",
+      "source_sheet": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "crop_coords_xyxy": [
+        1100,
+        700,
+        1185,
+        800
+      ],
+      "width": 85,
+      "height": 100,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/RigLayers/Layer_Eyes_Mouth.png"
+    },
+    {
+      "category": "RigLayers",
+      "name": "Layer_Hair_Front",
+      "filename": "Layer_Hair_Front.png",
+      "source_sheet": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "crop_coords_xyxy": [
+        1160,
+        690,
+        1335,
+        970
+      ],
+      "width": 175,
+      "height": 280,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/RigLayers/Layer_Hair_Front.png"
+    },
+    {
+      "category": "RigLayers",
+      "name": "Layer_Hair_Braid",
+      "filename": "Layer_Hair_Braid.png",
+      "source_sheet": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "crop_coords_xyxy": [
+        1280,
+        700,
+        1355,
+        890
+      ],
+      "width": 75,
+      "height": 190,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/RigLayers/Layer_Hair_Braid.png"
+    },
+    {
+      "category": "RigLayers",
+      "name": "Layer_Ribbon_Lily",
+      "filename": "Layer_Ribbon_Lily.png",
+      "source_sheet": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "crop_coords_xyxy": [
+        1345,
+        690,
+        1390,
+        835
+      ],
+      "width": 45,
+      "height": 145,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/RigLayers/Layer_Ribbon_Lily.png"
+    },
+    {
+      "category": "RigLayers",
+      "name": "Layer_Hair_Back",
+      "filename": "Layer_Hair_Back.png",
+      "source_sheet": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "crop_coords_xyxy": [
+        1360,
+        700,
+        1450,
+        935
+      ],
+      "width": 90,
+      "height": 235,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/RigLayers/Layer_Hair_Back.png"
+    },
+    {
+      "category": "RigLayers",
+      "name": "Layer_Sleeve_Ribbon",
+      "filename": "Layer_Sleeve_Ribbon.png",
+      "source_sheet": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "crop_coords_xyxy": [
+        1460,
+        700,
+        1500,
+        825
+      ],
+      "width": 40,
+      "height": 125,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/RigLayers/Layer_Sleeve_Ribbon.png"
+    },
+    {
+      "category": "RigLayers",
+      "name": "Layer_Cape_Train",
+      "filename": "Layer_Cape_Train.png",
+      "source_sheet": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "crop_coords_xyxy": [
+        1360,
+        810,
+        1515,
+        1010
+      ],
+      "width": 155,
+      "height": 200,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/RigLayers/Layer_Cape_Train.png"
+    },
+    {
+      "category": "RigLayers",
+      "name": "Layer_Skirt_Front",
+      "filename": "Layer_Skirt_Front.png",
+      "source_sheet": "Aurelia_ Edenfall Heroine Design Sheet.png",
+      "crop_coords_xyxy": [
+        1170,
+        875,
+        1350,
+        1010
+      ],
+      "width": 180,
+      "height": 135,
+      "relative_path": "Assets/_Edenfall/Art/Characters/Aurelia/Extracted/RigLayers/Layer_Skirt_Front.png"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea9821e4bd97e54985469e5ea68dc74, type: 3}
+  m_Name: Location_DawnGarden
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.World.LocationDefinition
+  locationId: loc_dawn_garden
+  nameVi: "V\u01B0\u1EDDn B\xECnh Minh"
+  nameEn: Dawn Garden
+  descriptionVi: "Khu v\u01B0\u1EDDn th\xE1nh \u0111\u1ECBa t\u0129nh l\u1EB7ng tr\xE0n
+    ng\u1EADp h\u01B0\u01A1ng hoa ly tinh t\xFA v\xE0 l\xE0n gi\xF3 s\u01B0\u01A1ng
+    mai."
+  descriptionEn: A serene sanctuary terrace perfumed with celestial lilies under
+    soft morning light.
+  locationType: 0
+  backgroundSprite: {fileID: 21300000, guid: 3b43344ebcb970648abfdaf4c7bffc20, type: 3}
+  distantSpireSprite: {fileID: 21300000, guid: 44d39e2cdc4d49b48a6d52bf05674fe4, type: 3}
+  ambientTint: {r: 1, g: 1, b: 1, a: 1}
+  hasFallingPetals: 1
+  hasCelestialSparks: 1
+  isUnlockedByDefault: 1
+  requiredAffectionToUnlock: 0
+  unlockRequirementDescriptionVi: 
+  unlockRequirementDescriptionEn: 
+  hotspots:
+  - hotspotId: spot_garden_talk
+    titleVi: "Tr\xF2 chuy\u1EC7n c\xF9ng Aurelia"
+    titleEn: Talk with Aurelia
+    screenPosition: {x: 0, y: 0}
+    actionType: talk
+    targetParameter: 
+  - hotspotId: spot_garden_lily
+    titleVi: "Ng\u1EAFm hoa ly tinh t\xFA"
+    titleEn: Admire Celestial Lilies
+    screenPosition: {x: 0, y: 0}
+    actionType: inspect
+    targetParameter: 

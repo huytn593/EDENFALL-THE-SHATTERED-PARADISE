@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52795953035d914488a38f6631637236, type: 3}
+  m_Name: Item_LuminarySeal
+  m_EditorClassIdentifier: Edenfall.Runtime::Edenfall.Inventory.ItemDefinition
+  itemId: luminary_seal
+  nameVi: "\u1EA4n K\xFD Tinh T\xFA"
+  nameEn: Crest of the Luminary
+  category: 3
+  rarity: 2
+  descriptionVi: "Huy hi\u1EC7u c\u1ED5 x\u01B0a \u0111\u01B0\u1EE3c d\u1EC7t t\u1EEB
+    \xE1nh s\xE1ng ban mai, kh\u1EAFc gia huy c\u1EE7a Edenfall."
+  descriptionEn: An ancient medallion woven from starlight, etched with the sigil
+    of Edenfall.
+  loreVi: "B\u1EA3o v\u1EADt gia truy\u1EC1n c\u1EE7a d\xF2ng t\u1ED9c Solstice,
+    \u0111\u1EADp c\xF9ng nh\u1ECBp v\u1EDBi \u0111\u1ECBa m\u1EA1ch c\u1EE7a th\xE1nh
+    \u0111\u1ECBa."
+  loreEn: Passed down through the Solstice bloodline, pulsing with the sanctuary
+    leylines.
+  icon: {fileID: 0}
+  isUsable: 1
+  targetGiftCharacterId: 
+  staminaRestore: 0
+  sanctuaryRestorationBonus: 10
