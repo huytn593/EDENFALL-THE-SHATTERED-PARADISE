@@ -37,6 +37,7 @@ namespace Edenfall.Core
         [SerializeField] private CharacterVisualRig aureliaRig;
         [SerializeField] private AureliaLiveRig aureliaLiveRig;
         [SerializeField] private AureliaRigController aureliaRigController;
+        [SerializeField] private AureliaRiggedCharacter aureliaRiggedCharacter;
         [SerializeField] private NPCSchedule aureliaSchedule;
         [SerializeField] private DialogueTree aureliaDialogueTree;
         [SerializeField] private CharacterDefinition aureliaDef;
@@ -186,14 +187,21 @@ namespace Edenfall.Core
 
             aureliaRoot.SetActive(isPresent);
 
-            if (isPresent && aureliaRig != null)
+            if (isPresent)
             {
-                // Align facing directly at player camera (First-Person POV)
-                aureliaRig.SetFacing(true);
                 CharacterEmotion targetEmotion = aureliaRelationship != null && aureliaRelationship.affection >= 50
                     ? CharacterEmotion.Smiling
                     : CharacterEmotion.Gentle;
-                aureliaRig.SetExpression(targetEmotion);
+
+                if (aureliaRig != null)
+                {
+                    aureliaRig.SetFacing(true);
+                    aureliaRig.SetExpression(targetEmotion);
+                }
+                if (aureliaRiggedCharacter != null)
+                {
+                    aureliaRiggedCharacter.SetAnimationState(targetEmotion == CharacterEmotion.Smiling ? AureliaAnimationState.Idle_Happy : AureliaAnimationState.Idle_Normal);
+                }
             }
         }
 
@@ -206,6 +214,11 @@ namespace Edenfall.Core
                     aureliaLiveRig.SetStagingMode(StagingMode.DialoguePortrait, mainCamera);
                     aureliaLiveRig.SetAnimationState(AureliaAnimationState.Talk_Normal);
                     aureliaLiveRig.SetTalking(true);
+                }
+                if (aureliaRiggedCharacter != null)
+                {
+                    aureliaRiggedCharacter.SetAnimationState(AureliaAnimationState.Talk_Normal);
+                    aureliaRiggedCharacter.SetTalking(true);
                 }
                 if (aureliaRig != null)
                 {
@@ -229,6 +242,11 @@ namespace Edenfall.Core
             {
                 aureliaLiveRig.SetTalking(false);
                 aureliaLiveRig.SetAnimationState(AureliaAnimationState.Idle_Normal);
+            }
+            if (aureliaRiggedCharacter != null)
+            {
+                aureliaRiggedCharacter.SetTalking(false);
+                aureliaRiggedCharacter.SetAnimationState(AureliaAnimationState.Idle_Normal);
             }
             SetCameraFocus(false);
         }

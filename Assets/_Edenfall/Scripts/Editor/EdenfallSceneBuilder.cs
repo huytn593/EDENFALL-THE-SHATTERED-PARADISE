@@ -55,7 +55,7 @@ namespace Edenfall.Editor
             var (bgRenderer, spireRenderer) = CreateEnvironmentSetup();
 
             // 4. Heroine Staging (Aurelia - Large Center First-Person Scale)
-            var (aureliaObj, aureliaRig, aureliaRigCtrl, aureliaLiveRig) = CreateAureliaSetup(cameraObj.GetComponent<Camera>());
+            var (aureliaObj, aureliaRig, aureliaRigCtrl, aureliaLiveRig, aureliaRiggedChar) = CreateAureliaSetup(cameraObj.GetComponent<Camera>());
 
             // 5. Full Production UI Canvas (Visual Novel Layout)
             var (canvasObj, cinOverlay, cinCGImg, subText, spkText, skipBtn, hotspotContainer, mapModal) = CreateUISetup();
@@ -73,6 +73,7 @@ namespace Edenfall.Editor
                 aureliaRig,
                 aureliaRigCtrl,
                 aureliaLiveRig,
+                aureliaRiggedChar,
                 hotspotContainer
             );
 
@@ -230,102 +231,92 @@ namespace Edenfall.Editor
         {
             var envRoot = new GameObject("--- ENVIRONMENT ---");
 
-            // Illustrated Full-Screen Background
-            var bgObj = new GameObject("VN_Background");
-            bgObj.transform.SetParent(envRoot.transform);
-            bgObj.transform.position = new Vector3(0, 0f, 5f);
-            bgObj.transform.localScale = new Vector3(3.2f, 3.2f, 1f);
+            // Multi-Layer Depth Environment Staging
+            // 1. Celestial Dawn Sky
+            var skyObj = new GameObject("VN_Sky");
+            skyObj.transform.SetParent(envRoot.transform);
+            skyObj.transform.position = new Vector3(0, 0.3f, 6f);
+            skyObj.transform.localScale = new Vector3(1.18f, 1.18f, 1f);
+            var srSky = skyObj.AddComponent<SpriteRenderer>();
+            var skySprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Environment/Sky_CelestialDawn.png");
+            if (skySprite != null) srSky.sprite = skySprite;
+            srSky.sortingOrder = -30;
 
-            var srBg = bgObj.AddComponent<SpriteRenderer>();
-            var gardenSprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Environment/Sanctuary_MarblePlatform.png");
-            if (gardenSprite != null) srBg.sprite = gardenSprite;
-            srBg.sortingOrder = -20;
-
-            // Optional Distant Spire
+            // 2. Distant Solstice Spire
             var spireObj = new GameObject("VN_DistantSpire");
             spireObj.transform.SetParent(envRoot.transform);
-            spireObj.transform.position = new Vector3(-3f, 1.5f, 10f);
-            spireObj.transform.localScale = new Vector3(2.2f, 2.2f, 1f);
-
+            spireObj.transform.position = new Vector3(-2.8f, 0.8f, 5.5f);
+            spireObj.transform.localScale = new Vector3(1.15f, 1.15f, 1f);
             var srSpire = spireObj.AddComponent<SpriteRenderer>();
             var spireSprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Environment/Spire_SolsticeDistant.png");
             if (spireSprite != null) srSpire.sprite = spireSprite;
             srSpire.sortingOrder = -25;
 
+            // 3. Illustrated Sanctuary Balcony & Marble Platform
+            var bgObj = new GameObject("VN_Background");
+            bgObj.transform.SetParent(envRoot.transform);
+            bgObj.transform.position = new Vector3(0, 0f, 5f);
+            bgObj.transform.localScale = new Vector3(1.15f, 1.15f, 1f);
+            var srBg = bgObj.AddComponent<SpriteRenderer>();
+            var gardenSprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{ArtRoot}/Environment/Sanctuary_MarblePlatform.png");
+            if (gardenSprite != null) srBg.sprite = gardenSprite;
+            srBg.sortingOrder = -20;
+
             return (srBg, srSpire);
         }
 
-        private static (GameObject, CharacterVisualRig, AureliaRigController, AureliaLiveRig) CreateAureliaSetup(Camera mainCam)
+        private static (GameObject, CharacterVisualRig, AureliaRigController, AureliaLiveRig, AureliaRiggedCharacter) CreateAureliaSetup(Camera mainCam)
         {
             var charRoot = GameObject.Find("--- HEROINE STAGING ---") ?? new GameObject("--- HEROINE STAGING ---");
 
-            var aureliaObj = new GameObject("Heroine_Aurelia");
+            // True 21-Layer Rigged Aurelia Prefab
+            string prefabPath = "Assets/_Edenfall/Prefabs/Characters/AureliaRiggedPrefab.prefab";
+            var rigPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+            GameObject aureliaObj;
+            if (rigPrefab != null)
+            {
+                aureliaObj = (GameObject)PrefabUtility.InstantiatePrefab(rigPrefab);
+                aureliaObj.name = "Heroine_Aurelia";
+            }
+            else
+            {
+                aureliaObj = new GameObject("Heroine_Aurelia");
+            }
             aureliaObj.transform.SetParent(charRoot.transform);
 
-            // Canonical Master Production Sprites
-            string charRootArt = $"{ArtRoot}/Characters/Aurelia";
-            var halfBodySp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_HalfBody_Canonical.png")
-                ?? AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_VN_Portrait.png");
-            var fullBodySp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_FullBody_Canonical.png")
-                ?? AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Aurelia_VN_FullBody.png");
-
-            // Talk Animation Frames (5 frames)
-            var talkFrames = new List<Sprite>();
-            for (int i = 0; i < 5; i++)
-            {
-                var tf = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Talk/Aurelia_Talk_{i:02d}.png");
-                if (tf != null) talkFrames.Add(tf);
-            }
-
-            // Canonical Portraits (16 frames)
-            var portraits = new List<Sprite>();
-            string[] pNames = { "Normal", "Smile", "Happy", "Excited", "Surprised", "Confused", "Thinking", "Concerned", "Shy", "Blush", "Teasing", "Seductive", "Sad", "Angry", "Hurt", "Satisfied" };
-            foreach (var pName in pNames)
-            {
-                var pSp = AssetDatabase.LoadAssetAtPath<Sprite>($"{charRootArt}/Portraits/Portrait_{pName}.png");
-                if (pSp != null) portraits.Add(pSp);
-            }
-
-            // Base Body Renderer
-            var baseR = aureliaObj.AddComponent<SpriteRenderer>();
-            baseR.sprite = halfBodySp != null ? halfBodySp : fullBodySp;
-            baseR.sortingOrder = 8;
-
-            // Talk Renderer (for speech animation)
-            var talkChild = new GameObject("TalkRenderer");
-            talkChild.transform.SetParent(aureliaObj.transform, false);
-            var talkR = talkChild.AddComponent<SpriteRenderer>();
-            talkR.sortingOrder = 9;
-            talkChild.SetActive(false);
+            var riggedChar = aureliaObj.GetComponent<AureliaRiggedCharacter>();
 
             // Anchor & Alignment System
-            var anchor = aureliaObj.AddComponent<NPCStageAnchor>();
+            var anchor = aureliaObj.GetComponent<NPCStageAnchor>() ?? aureliaObj.AddComponent<NPCStageAnchor>();
 
-            // Phase 3.6 Live2D-Style Decoupled Character Rig
-            var liveRig = aureliaObj.AddComponent<AureliaLiveRig>();
-            liveRig.ConfigureMasterSprites(halfBodySp, fullBodySp, talkFrames, portraits, baseR, talkR, anchor);
+            // Find primary torso renderer for alignment
+            var torsoChild = aureliaObj.transform.Find("Bone_Root/Bone_Pelvis/Bone_Torso/Body_Torso");
+            var primaryRend = torsoChild != null ? torsoChild.GetComponent<SpriteRenderer>() : aureliaObj.GetComponent<SpriteRenderer>();
 
-            // Backward Compatibility Visual Rig
-            var rig = aureliaObj.AddComponent<CharacterVisualRig>();
-            rig.SetMasterSprites(halfBodySp, fullBodySp, baseR, anchor);
+            if (primaryRend != null && primaryRend.sprite != null)
+            {
+                anchor.AlignCharacter(aureliaObj.transform, primaryRend, StagingMode.DialoguePortrait, mainCam);
+            }
+            else
+            {
+                aureliaObj.transform.position = new Vector3(0.15f, -4.95f, 0f);
+                aureliaObj.transform.localScale = new Vector3(0.2462f, 0.2462f, 1f);
+            }
 
-            // Align mathematically to stage baseline
-            anchor.AlignCharacter(aureliaObj.transform, baseR, StagingMode.DialoguePortrait, mainCam);
-            liveRig.CaptureBaseTransform();
-            rig.CaptureBaseTransform();
+            // Backward Compatibility Visual Rig & Live Rig
+            var rig = aureliaObj.GetComponent<CharacterVisualRig>() ?? aureliaObj.AddComponent<CharacterVisualRig>();
+            var liveRig = aureliaObj.GetComponent<AureliaLiveRig>() ?? aureliaObj.AddComponent<AureliaLiveRig>();
+            var rigCtrl = aureliaObj.GetComponent<AureliaRigController>() ?? aureliaObj.AddComponent<AureliaRigController>();
 
-            // Setup AureliaRigController
-            var rigCtrl = aureliaObj.AddComponent<AureliaRigController>();
-
-            // Setup NPC Controller
-            var npc = aureliaObj.AddComponent<NPCController>();
+            // NPC Controller
+            var npc = aureliaObj.GetComponent<NPCController>() ?? aureliaObj.AddComponent<NPCController>();
             var aureliaDef = AssetDatabase.LoadAssetAtPath<CharacterDefinition>($"{DataRoot}/Characters/Character_Aurelia.asset");
             var aureliaDiag = AssetDatabase.LoadAssetAtPath<DialogueTree>($"{DataRoot}/Dialogue/DialogueTree_Aurelia.asset");
             var aureliaSchedule = AssetDatabase.LoadAssetAtPath<NPCSchedule>($"{DataRoot}/Schedules/Schedule_Aurelia.asset");
 
             npc.Initialize(aureliaDef, aureliaSchedule, aureliaDiag);
 
-            return (aureliaObj, rig, rigCtrl, liveRig);
+            return (aureliaObj, rig, rigCtrl, liveRig, riggedChar);
         }
 
         private static (GameObject, GameObject, Image, Text, Text, Button, Transform, GameObject) CreateUISetup()
@@ -353,11 +344,21 @@ namespace Edenfall.Editor
             // 1. Top HUD Bar (Celestial Navigation & Status)
             var hudObj = new GameObject("HUD");
             hudObj.transform.SetParent(canvasObj.transform, false);
+            var hudRt = hudObj.AddComponent<RectTransform>();
+            hudRt.anchorMin = Vector2.zero;
+            hudRt.anchorMax = Vector2.one;
+            hudRt.offsetMin = Vector2.zero;
+            hudRt.offsetMax = Vector2.zero;
             var hud = hudObj.AddComponent<HUDController>();
 
             // 2. First-Person Visual Novel Dialogue Panel (Matching Reference Image)
             var diagObj = new GameObject("DialoguePanel");
             diagObj.transform.SetParent(canvasObj.transform, false);
+            var diagRt = diagObj.AddComponent<RectTransform>();
+            diagRt.anchorMin = Vector2.zero;
+            diagRt.anchorMax = Vector2.one;
+            diagRt.offsetMin = Vector2.zero;
+            diagRt.offsetMax = Vector2.zero;
             var diagCg = diagObj.AddComponent<CanvasGroup>();
             var diagUI = diagObj.AddComponent<DialogueUI>();
 
@@ -370,10 +371,11 @@ namespace Edenfall.Editor
             boxBtn.onClick.AddListener(diagUI.OnClickDialogueBox);
 
             var boxRt = boxObj.GetComponent<RectTransform>();
-            boxRt.anchorMin = new Vector2(0.06f, 0.03f);
-            boxRt.anchorMax = new Vector2(0.94f, 0.28f);
-            boxRt.offsetMin = Vector2.zero;
-            boxRt.offsetMax = Vector2.zero;
+            boxRt.anchorMin = new Vector2(0.5f, 0f);
+            boxRt.anchorMax = new Vector2(0.5f, 0f);
+            boxRt.pivot = new Vector2(0.5f, 0f);
+            boxRt.sizeDelta = new Vector2(1680f, 270f);
+            boxRt.anchoredPosition = new Vector2(0f, 35f);
 
             // Nameplate Badge
             var badgeObj = new GameObject("NameBadge");
@@ -381,16 +383,17 @@ namespace Edenfall.Editor
             var badgeImg = badgeObj.AddComponent<Image>();
             badgeImg.color = new Color(0.12f, 0.16f, 0.28f, 0.95f);
             var badgeRt = badgeObj.GetComponent<RectTransform>();
-            badgeRt.anchorMin = new Vector2(0.02f, 0.74f);
-            badgeRt.anchorMax = new Vector2(0.24f, 0.96f);
-            badgeRt.offsetMin = Vector2.zero;
-            badgeRt.offsetMax = Vector2.zero;
+            badgeRt.anchorMin = new Vector2(0f, 1f);
+            badgeRt.anchorMax = new Vector2(0f, 1f);
+            badgeRt.pivot = new Vector2(0f, 0f);
+            badgeRt.sizeDelta = new Vector2(280f, 55f);
+            badgeRt.anchoredPosition = new Vector2(30f, -15f);
 
             var nameTextObj = new GameObject("SpeakerName");
             nameTextObj.transform.SetParent(badgeObj.transform, false);
             var spkNameText = nameTextObj.AddComponent<Text>();
             spkNameText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            spkNameText.fontSize = 22;
+            spkNameText.fontSize = 24;
             spkNameText.fontStyle = FontStyle.Bold;
             spkNameText.color = new Color(1.0f, 0.88f, 0.45f);
             spkNameText.alignment = TextAnchor.MiddleCenter;
@@ -405,14 +408,15 @@ namespace Edenfall.Editor
             bodyTextObj.transform.SetParent(boxObj.transform, false);
             var diagBodyText = bodyTextObj.AddComponent<Text>();
             diagBodyText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            diagBodyText.fontSize = 22;
-            diagBodyText.lineSpacing = 1.25f;
+            diagBodyText.fontSize = 24;
+            diagBodyText.lineSpacing = 1.3f;
             diagBodyText.color = new Color(0.95f, 0.96f, 1.0f);
             var bodyRt = bodyTextObj.GetComponent<RectTransform>();
-            bodyRt.anchorMin = new Vector2(0.03f, 0.10f);
-            bodyRt.anchorMax = new Vector2(0.78f, 0.70f);
-            bodyRt.offsetMin = Vector2.zero;
-            bodyRt.offsetMax = Vector2.zero;
+            bodyRt.anchorMin = new Vector2(0f, 0f);
+            bodyRt.anchorMax = new Vector2(0f, 0f);
+            bodyRt.pivot = new Vector2(0f, 0f);
+            bodyRt.sizeDelta = new Vector2(1300f, 180f);
+            bodyRt.anchoredPosition = new Vector2(40f, 30f);
 
             // Action Buttons in Dialogue Box (Skip, Auto, Log, Hide)
             var (autoBtn, autoTxt) = CreateVNActionButton(boxObj.transform, "Auto", new Vector2(0.80f, 0.12f), new Vector2(0.88f, 0.36f));
@@ -682,6 +686,7 @@ namespace Edenfall.Editor
             CharacterVisualRig rig,
             AureliaRigController rigCtrl,
             AureliaLiveRig liveRig,
+            AureliaRiggedCharacter riggedChar,
             Transform hotspotContainer)
         {
             var vnRoot = new GameObject("--- VN SCENE CONTROLLER ---");
@@ -699,6 +704,7 @@ namespace Edenfall.Editor
             SetPrivateField(vnCtrl, "aureliaRig", rig);
             SetPrivateField(vnCtrl, "aureliaLiveRig", liveRig);
             SetPrivateField(vnCtrl, "aureliaRigController", rigCtrl);
+            SetPrivateField(vnCtrl, "aureliaRiggedCharacter", riggedChar);
             SetPrivateField(vnCtrl, "aureliaDef", aureliaDef);
             SetPrivateField(vnCtrl, "aureliaDialogueTree", aureliaTree);
             SetPrivateField(vnCtrl, "aureliaSchedule", aureliaSched);
