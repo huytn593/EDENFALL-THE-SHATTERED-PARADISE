@@ -9,7 +9,8 @@
         "Unity.RenderPipelines.Core.Runtime",
         "Unity.Timeline",
         "Unity.Cinemachine",
-        "UnityEngine.UI"
+        "UnityEngine.UI",
+        "Unity.2D.Animation.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -3,6 +3,8 @@
     "rootNamespace": "Edenfall.Tests.EditMode",
     "references": [
         "Edenfall.Runtime",
+        "Edenfall.Editor",
+        "Unity.2D.Animation.Runtime",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

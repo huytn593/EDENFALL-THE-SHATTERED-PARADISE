@@ -7,7 +7,10 @@
         "Unity.TextMeshPro",
         "Unity.RenderPipelines.Universal.Runtime",
         "Unity.RenderPipelines.Universal.2D.Runtime",
-        "Unity.RenderPipelines.Core.Runtime"
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.2D.Animation.Runtime",
+        "Unity.2D.Animation.Editor",
+        "Unity.2D.Sprite.Editor"
     ],
     "includePlatforms": [
         "Editor"
